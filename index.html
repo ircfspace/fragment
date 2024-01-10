@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fa">
+    <head>
+        <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="./assets/css/bootstrap-rtl.min.css" rel="stylesheet" />
+        <link href="./assets/css/vazir.css" rel="stylesheet" />
+        <link href="./assets/css/style.css?v1.0" rel="stylesheet" />
+        <title>IRCF | ابزار فرگمنت</title>
+        <meta name="description" content="آی پی سالم و تمیز برای کلودفلر (کلادفلر) جهت دسترسی به اینترنت آزاد" />
+        <meta name="keywords" content="کلودفلر, کلادفلر, cloudflare, cf, آی پی تمیز, آی پی سالم, اسکن آی پی" />
+        <meta name="robots" content="index,follow,noodp" />
+        <meta name="googlebot" content="index,follow" />
+        <meta name="theme-color" content="#ff7900" />
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+        <meta charset="UTF-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" type="image/x-icon" href="./assets/favicon.ico?v1.1" />
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse">
+            <div class="container">
+                <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12 col-centered">
+                    <a href=".">
+                        <img src="./assets/img/cflogo.png?v1.1" alt="logo" />
+                        <h1>اینترنت برای همه؛ یا هیچ‌کس!</h1>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        <div class="clearfix"></div>
+        <div class="container">
+            <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12 col-centered">
+                <ul class="nav nav-tabs">
+                    <li>
+                        <a href="https://ircf.space">معرفی</a>
+                    </li>
+                    <li>
+                        <a href="https://ircf.space/list.php">IP تمیز</a>
+                    </li>
+                    <li class="dropdown active">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">ابزارها <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="https://ircf.space/scanner.php">معرفی اسکنرها</a></li>
+                            <li><a href="https://ircf.space/export.php" target="_blank">خروجی نتایج اسکن</a></li>
+                            <li class="divider"></li>
+                            <li class="active"><a href="./index.html">تستر کانفیگ</a></li>
+                        </ul>
+                    </li>
+                    <li class="pull-left">
+                        <a href="https://ircf.space/contacts.php">تماس‌باما</a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+                <div class="alert alert-info" id="defAlert">
+                    <p>توسط ابزار فرگمنت می‌تونین دامنه‌های مرده‌تون رو مجدد زنده کنید!</p>
+                </div>
+                <div class="minWidth">
+                    <select class="form-control dirLeft" id="protocol">
+                        <option value="vless">VLESS</option>
+                        <option value="vmess">VMESS</option>
+                    </select>
+                    <select class="form-control dirLeft" id="network" disabled>
+                        <option value="ws">WS</option>
+                        <option value="tcp">TCP</option>
+                    </select>
+                </div>
+                <input class="form-control dirLeft" placeholder="UUID" id="uuid" />
+                <div class="minWidth">
+                    <input class="form-control dirLeft" placeholder="SNI" id="sni" />
+                    <input class="form-control dirLeft" placeholder="PORT" id="port" type="number" />
+                </div>
+                <div class="minWidth">
+                    <input class="form-control dirLeft" placeholder="PATH" id="path" />
+                    <select class="form-control dirLeft" id="tls">
+                        <option value="tls">TLS</option>
+                        <option value="none">No TLS</option>
+                    </select>
+                </div>
+                <input class="form-control dirLeft" placeholder="CleanIP (default: zula.ir)" id="cleanIp" />
+                <div class="input-group fetchIps">
+                    <button class="btn btn-default" type="submit" id="getFile">
+                        ایجاد فایل JSON
+                    </button>
+                </div>
+                <div class="clearfix"></div>
+                <div id="tableResults" class="hidden">
+                    <div class="clearfix"></div>
+                    <hr>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>آی‌پی</th>
+                                <th>عملیات</th>
+                            </tr>
+                            </thead>
+                            <tbody id="result"></tbody>
+                        </table>
+                    </div>
+                    <div id="list">
+                        <div class="clearfix"></div>
+                        <hr>
+                        <textarea class="form-control dirLeft"></textarea>
+                    </div>
+                </div>
+                <br>
+                <div id="donate" class="modal fade" role="dialog">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">دونیت</h4>
+                            </div>
+                            <div class="modal-body modalBodyOverflow">
+                                <p>درصورت تمایل برای دونیت می‌تونین از یکی‌از روش‌های زیر استفاده کنین:</p>
+                                <div class="dirLeft">
+                                    <small>Buy me a coffee:</small>
+                                    <br>
+                                    <a href="https://buymeacoffee.com/ircf" class="btn btn-default btn-block" target="_blank">buymeacoffee.com/ircf</a>
+                                    <br>
+                                    <small>Tether (TRC20):</small>
+                                    <br>
+                                    <input type="text" class="form-control text-center" value="TF5cT8fQMuajHGGH141U9JbTygFojkrFdB" />
+                                    <br>
+                                    <small>Bitcoin:</small>
+                                    <br>
+                                    <input type="text" class="form-control text-center" value="bc1qyhx0qn9722vdvlz4s64g4sxq3yne0f5ryz3jyd" />
+                                    <br>
+                                    <small>Tron (TRX):</small>
+                                    <br>
+                                    <input type="text" class="form-control text-center" value="TF5cT8fQMuajHGGH141U9JbTygFojkrFdB" />
+                                    <br>
+                                    <small>Ethereum:</small>
+                                    <br>
+                                    <input type="text" class="form-control text-center" value="0x2A72777912A15A6387a1116f9bDDFe1Cb9474BF1" />
+									<br>
+                                    <small>Litecoin:</small>
+                                    <br>
+                                    <input type="text" class="form-control text-center" value="ltc1q5d4u366xef336pjvccn7akn02upavmk45fhtdw" />
+                                    <br>
+									<small>TON (ERC20):</small>
+									<br>
+									<input type="text" class="form-control text-center" value="0x2A72777912A15A6387a1116f9bDDFe1Cb9474BF1" />
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">حله</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <footer>
+                    <p class="text-center">
+                        © توسط
+                        <a href="https://github.com/ircfspace/fragment" target="_blank">IRCF</a>
+                        با کمک
+                        GFW-knocker
+                    </p>
+                    <!--<div class="text-center">
+                        <a href="#" class="btn btn-link btn-normal btn-lg btn-outline donateLink" data-toggle="modal" data-target="#donate">☕</a>
+                    </div>-->
+                    <script src="./assets/js/jquery.min.js"></script>
+                    <script src="./assets/js/bootstrap.min.js"></script>
+                    <script src="./assets/js/script.js?v1.0"></script>
+                </footer>
+            </div>
+        </div>
+    </body>
+</html>
