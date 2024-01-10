@@ -96,7 +96,6 @@
         "concurrency": -1
       }
     },
-    
     {
       "tag": "fragment",
       "protocol": "freedom",
@@ -115,7 +114,6 @@
         }
       }
     },
-
     {
       "tag": "direct",
       "protocol": "freedom",
@@ -142,7 +140,6 @@
         "outboundTag": "api",
         "enabled": true
       },
-        
       {
         "id": "5465425548310166497",
         "type": "field",
