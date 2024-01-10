@@ -4,7 +4,7 @@
         <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
         <link href="./assets/css/bootstrap-rtl.min.css" rel="stylesheet" />
         <link href="./assets/css/vazir.css" rel="stylesheet" />
-        <link href="./assets/css/style.css?v1.0" rel="stylesheet" />
+        <link href="./assets/css/style.css?v1.1" rel="stylesheet" />
         <title>IRCF | ابزار فرگمنت</title>
         <meta name="description" content="آی پی سالم و تمیز برای کلودفلر (کلادفلر) جهت دسترسی به اینترنت آزاد" />
         <meta name="keywords" content="کلودفلر, کلادفلر, cloudflare, cf, آی پی تمیز, آی پی سالم, اسکن آی پی" />
@@ -70,8 +70,12 @@
                     <input class="form-control dirLeft" placeholder="SNI" id="sni" />
                     <input class="form-control dirLeft" placeholder="PORT" id="port" type="number" />
                 </div>
-                <div class="minWidth">
+                <div class="xsWidth">
                     <input class="form-control dirLeft" placeholder="PATH" id="path" />
+                    <select class="form-control dirLeft" id="early">
+                        <option value="on">Early Data</option>
+                        <option value="off">Off</option>
+                    </select>
                     <select class="form-control dirLeft" id="tls">
                         <option value="tls">TLS</option>
                         <option value="none">No TLS</option>
@@ -162,7 +166,7 @@
                     </div>-->
                     <script src="./assets/js/jquery.min.js"></script>
                     <script src="./assets/js/bootstrap.min.js"></script>
-                    <script src="./assets/js/script.js?v1.0"></script>
+                    <script src="./assets/js/script.js?v1.1"></script>
                 </footer>
             </div>
         </div>

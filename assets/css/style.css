@@ -278,6 +278,27 @@ img[alt="loader"] {
 .minWidth input:last-child {
 	border-radius: 0 3px 3px 0;
 }
+.xsWidth {
+	float: right;
+	width: 100%;
+	margin: -10px 0 0 0;
+}
+.xsWidth input,
+.xsWidth select {
+	width: 33%;
+	float: left;
+	border-radius: 0;
+}
+.xsWidth select:first-child,
+.xsWidth input:first-child {
+	border-radius: 3px 0 0 3px;
+	border-right: transparent;
+}
+.xsWidth select:last-child,
+.xsWidth input:last-child {
+	border-left: transparent;
+	border-radius: 0 3px 3px 0;
+}
 
 footer {
 	padding: 10px 0;

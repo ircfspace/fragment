@@ -31,6 +31,7 @@ $(document).on('click', '#getFile', function(e) {
         }
     }
     let tls = $('#tls').val();
+    let early = $('#early').val();
     let cleanIp = $('#cleanIp').val();
     if ( cleanIp === '' ) {
         cleanIp = 'zula.ir';
@@ -46,7 +47,12 @@ $(document).on('click', '#getFile', function(e) {
             data.outbounds[0].streamSettings.network = network;
             data.outbounds[0].streamSettings.tlsSettings.serverName = sni;
             data.outbounds[0].streamSettings.wsSettings.headers.Host = sni;
-            data.outbounds[0].streamSettings.wsSettings.path = path+'/?ed=2048';
+            if ( early === 'on' ) {
+                data.outbounds[0].streamSettings.wsSettings.path = path+'/?ed=2048';
+            }
+            else {
+                data.outbounds[0].streamSettings.wsSettings.path = path;
+            }
             data.outbounds[0].settings.vnext[0].port = Number(port);
             data.outbounds[0].settings.vnext[0].users[0].id = uuid;
             data.outbounds[0].settings.vnext[0].address = cleanIp;
