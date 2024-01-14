@@ -98,14 +98,14 @@ function base64Decode(config) {
     }
 }
 
-$(document).on('keyup change', '#defConfig', function(e) {
+$(document).on('keyup change input', '#defConfig', function(e) {
     e.preventDefault();
     let config = $(this).val().trim();
     if ( config === '' ) {
         console.clear();
         $('#protocol option').removeAttr('selected');
         $('#tls').prop('checked', true);
-        $('#early').prop('checked', true);
+        $('#early').prop('checked', false);
         $('#uuid').val("");
         $('#port').val("");
         $('#sni').val("");
@@ -146,6 +146,9 @@ $(document).on('keyup change', '#defConfig', function(e) {
         $('#cleanIp').val(defConfig.address);
     }
     let path = defConfig.path;
+    if ( typeof path === "undefined" ) {
+        path = "";
+    }
     let early = $('#early').is(':checked');
     if ( early ) {
         path = path+'/?ed=2048';
