@@ -98,11 +98,15 @@ function base64Decode(config) {
     }
 }
 
-$(document).on('keyup paste change', '#defConfig', function(e) {
+$(document).on('click', '#checkConf', function(e) {
+    $('#defConfig').trigger('keyup')
+});
+
+$(document).on('keyup', '#defConfig', function(e) {
     e.preventDefault();
     let config = $(this).val().trim();
     if ( config === '' ) {
-        console.clear();
+        //console.clear();
         $('#protocol option').removeAttr('selected');
         $('#tls').prop('checked', true);
         $('#early').prop('checked', false);
