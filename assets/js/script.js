@@ -144,7 +144,8 @@ $(document).on('keyup', '#defConfig', function(e) {
         resetForm();
         return false;
     }
-    $('#port').val(getAddress(config)[1]);
+    let port = String(getAddress(config)[1]).replace('/', '');
+    $('#port').val(port);
     $('#sni').val(defConfig.host);
     if ( (protocol === 'vmess' && defConfig.tls === "tls") || (protocol === 'vless' && defConfig.security === "tls") ) {
         $('#tls').prop('checked', true);
@@ -187,7 +188,7 @@ $(document).on('click', '#early', function(e) {
     let early = $('#early').is(':checked');
     let path = $('#path').val();
     if ( !early ) {
-        $('#path').val(path.replace('/?ed=2048', ''));
+        $('#path').val(path.replace('?ed=2048', ''));
     }
     else {
         path = path+'/?ed=2048';
