@@ -260,6 +260,9 @@ $(document).on('click', '#getFile', function(e) {
     let tls = $('#tls').is(':checked');
     let mux = $('#mux').is(':checked');
     let concurrency = $('#concurrency').val();
+    let packets = $('#packets').val();
+    let length = $('#length').val();
+    let interval = $('#interval').val();
     //let early = $('#early').is(':checked');
     let cleanIp = $('#cleanIp').val();
     if ( cleanIp === '' ) {
@@ -288,16 +291,13 @@ $(document).on('click', '#getFile', function(e) {
             data.outbounds[0].settings.vnext[0].port = Number(port);
             data.outbounds[0].settings.vnext[0].users[0].id = uuid;
             data.outbounds[0].settings.vnext[0].address = cleanIp;
+            data.outbounds[1].settings.fragment.packets = packets;
+            data.outbounds[1].settings.fragment.length = length;
+            data.outbounds[1].settings.fragment.interval = interval;
             if ( tls ) {
-                data.outbounds[1].settings.fragment.packets = 'tlshello';
-                data.outbounds[1].settings.fragment.length = '10-20';
-                data.outbounds[1].settings.fragment.interval = '10-20';
                 data.outbounds[0].streamSettings.security = "tls";
             }
             else {
-                data.outbounds[1].settings.fragment.packets = '1-1';
-                data.outbounds[1].settings.fragment.length = '3-5';
-                data.outbounds[1].settings.fragment.interval = '5';
                 delete data.outbounds[0].streamSettings.tlsSettings;
                 delete data.outbounds[0].streamSettings.security;
             }
