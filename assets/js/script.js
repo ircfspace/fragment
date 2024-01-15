@@ -168,33 +168,39 @@ $(document).on('keyup', '#defConfig', function(e) {
     else {
         $('#cleanIp').val(defConfig.address);
     }
-    let path = defConfig.path;
-    if ( typeof path === "undefined" ) {
-        path = "";
-    }
+    let path = setPath(defConfig.path);
     let early = $('#early').is(':checked');
     if ( early ) {
-        path = path+'/?ed=2048';
-        path = path.replace('//', '/');
-    }
-    else {
-        path = path.replace('/?ed=2048', '')
+        path = path+'?ed=2048';
     }
     $('#uuid').val(getHashId(defConfig.id));
     $('#path').val(path);
 });
 
+function setPath(string) {
+    if ( typeof string === "undefined" ) {
+        string = "";
+    }
+    if ( string.length > 0 ) {
+        string = string.replace('?ed=2048', '');
+        /*if (!string.startsWith("/")) {
+            string = '/'+string;
+        }*/
+        /*if (string.endsWith("/")) {
+            string = string.substring(0, string.length - 1);
+        }*/
+        string = string.replace('//', '/');
+    }
+    return string;
+}
+
 $(document).on('click', '#early', function(e) {
     let early = $('#early').is(':checked');
-    let path = $('#path').val();
-    if ( !early ) {
-        $('#path').val(path.replace('?ed=2048', ''));
+    let path = setPath($('#path').val());
+    if ( early ) {
+        path = path+'?ed=2048';
     }
-    else {
-        path = path+'/?ed=2048';
-        path = path.replace('//', '/');
-        $('#path').val(path);
-    }
+    $('#path').val(path);
 });
 
 $(document).on('click', '#tls', function(e) {
@@ -248,16 +254,7 @@ $(document).on('click', '#getFile', function(e) {
     let uuid = $('#uuid').val();
     let sni = cleanUrl($('#sni').val());
     let port = $('#port').val();
-    let path = $('#path').val();
-    if ( path.length > 0 ) {
-        if (!path.startsWith("/")) {
-            path = '/'+path;
-        }
-        if (path.endsWith("/")) {
-            path = path.substring(0, path.length - 1);
-        }
-        path = path.replace('//', '/');
-    }
+    let path = setPath($('#path').val());
     let tls = $('#tls').is(':checked');
     let mux = $('#mux').is(':checked');
     let concurrency = $('#concurrency').val();
