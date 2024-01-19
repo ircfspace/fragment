@@ -300,28 +300,6 @@ $(document).on('click', '#getFile', function(e) {
                 delete data.outbounds[0].streamSettings.security;
             }
             //console.log(data)
-            $.ajax({
-                url: 'https://pastes.io/api/paste/create',
-                type: 'POST',
-                dataType: 'json',
-                data: {
-                    content: data,
-                    status: '1',
-                    expire: 'N',
-                    title: 'fragment',
-                    syntax: 'none',
-                },
-                headers: {
-                    'Accept': 'application/json',
-                    'Authorization': 'Bearer 797a51c84a75ea799ad02b0977e31a3147d2325573add6440845d33387944cfb'
-                },
-                success: function (response) {
-                    console.log(response);
-                },
-                error: function (xhr, status, error) {
-                    console.error(error);
-                }
-            });
             downloadJsonFile(data, 'fragment [ircf.space].json');
         })
         .catch(error => console.error('Error fetching the JSON file:', error));
