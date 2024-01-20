@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html>
     <head>
         <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
         <link href="./assets/css/bootstrap-rtl.min.css" rel="stylesheet" />
         <link href="./assets/css/vazir.css" rel="stylesheet" />
         <link href="./assets/css/style.css?v1.5.9" rel="stylesheet" />
-        <title>IRCF | ابزار فرگمنت</title>
+        <title data-translate="page-title"></title>
         <meta name="description" content="آی پی سالم و تمیز برای کلودفلر (کلادفلر) جهت دسترسی به اینترنت آزاد" />
         <meta name="keywords" content="کلودفلر, کلادفلر, cloudflare, cf, آی پی تمیز, آی پی سالم, اسکن آی پی" />
         <meta name="robots" content="index,follow,noodp" />
@@ -19,56 +19,69 @@
         <link rel="icon" type="image/x-icon" href="./assets/favicon.ico?v1.1" />
     </head>
     <body>
-        <nav class="navbar navbar-inverse">
+        <nav class="navbar navbar-inverse" id="nav">
             <div class="container">
                 <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12 col-centered">
                     <a href=".">
                         <img src="./assets/img/cflogo.png?v1.1" alt="logo" />
-                        <h1>اینترنت برای همه؛ یا هیچ‌کس!</h1>
+                        <h1 data-translate="header-text">اینترنت برای همه؛ یا هیچ‌کس!</h1>
                     </a>
                 </div>
+                <div style="position: fixed;margin-top: -11px;">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <small data-translate="language">Language</small><img src="./assets/img/language-translate-speech-bubbles-icon.svg" style="margin-top: 2px;padding-right: 5px;"/>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                      <button type="button" onclick="changeLanguage('en')">English 🇬🇧</button>
+                      <button type="button" onclick="changeLanguage('de')">Deutsch 🇩🇪</button>
+                      <button type="button" onclick="changeLanguage('fa')">فارسی 🇮🇷</button>
+                      <button type="button" onclick="changeLanguage('fr')">Française 🇫🇷</button>
+                      <button type="button" onclick="changeLanguage('ru')">Русский 🇷🇺</button>
+                      <button type="button" onclick="changeLanguage('zh')">中文 🇨🇳</button>
+                    </div>
+                  </div>
             </div>
         </nav>
         <div class="clearfix"></div>
-        <div class="container">
+        <div class="container" id="content">
             <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12 col-centered">
                 <ul class="nav nav-tabs">
                     <li>
-                        <a href="https://ircf.space">معرفی</a>
+                        <a data-translate="about" href="https://ircf.space"></a>
                     </li>
                     <li>
-                        <a href="https://ircf.space/list.php">IP تمیز</a>
+                        <a data-translate="cleanip" href="https://ircf.space/list.php"> </a>
                     </li>
                     <li class="dropdown active">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">ابزارها <span class="caret"></span></a>
+                        <a data-translate="tools" class="dropdown-toggle" data-toggle="dropdown" href="#"> <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="https://ircf.space/scanner.php">معرفی اسکنرها</a></li>
-                            <li><a href="https://ircf.space/export.php" target="_blank">خروجی نتایج اسکن</a></li>
+                            <li><a data-translate="scanners" href="https://ircf.space/scanner.php"> </a></li>
+                            <li><a data-translate="output" href="https://ircf.space/export.php" target="_blank">  </a></li>
                             <li class="divider"></li>
-                            <li class="active"><a href="./index.html">فرگمنت</a></li>
+                            <li data-translate="fragment" class="active"><a href="./index.html"></a></li>
                         </ul>
                     </li>
                     <li class="pull-left">
-                        <a href="https://ircf.space/contacts.php">تماس‌باما</a>
+                        <a data-translate="contact" href="https://ircf.space/contacts.php"></a>
                     </li>
                 </ul>
                 <div class="clearfix"></div>
                 <div class="alert alert-info" id="defAlert">
-                    <p>توسط ابزار فرگمنت می‌تونین دامنه‌های مرده‌تون رو مجدد زنده کنید!</p>
+                    <p data-translate="defAlert"> </p>
                 </div>
-                <p>یک کانفیگ VLESS/VMESS از نوع webSocket وارد کنین:</p>
+                <p data-translate="input-conf"> </p>
                 <div class="input-group">
                     <span class="input-group-btn">
-                        <button class="btn btn-default" type="button" id="checkConf">بررسی</button>
+                        <button class="btn btn-default" type="button" id="checkConf" data-translate="check"></button>
                     </span>
                     <input class="form-control dirLeft" placeholder="Your Config" value="" id="defConfig" />
                 </div>
-                <div class="orClass"><small>یا</small></div>
-                <p>یا تنظیمات زیر رو به‌صورت دستی تکمیل کنین:</p>
+                <div class="orClass"><small data-translate="or"></small></div>
+                <p data-translate="manual-input"> </p>
                 <div class="xsWidth withSmallCenter">
                     <select class="form-control dirLeft" id="protocol">
-                        <option value="vless">VLESS (WS)</option>
-                        <option value="vmess">VMESS (WS)</option>
+                        <option value="vless"> </option>
+                        <option value="vmess"> </option>
                     </select>
                     <input class="form-control dirLeft" placeholder="UUID" id="uuid" />
                     <input class="form-control dirLeft" placeholder="PORT" id="port" type="number" min="0" />
@@ -94,19 +107,18 @@
                     <span class="slider round"></span>
                     <strong>Mux</strong>
                 </label>
-                <div class="orClass"><small>مقادیر فرگمنت</small></div>
+                <div class="orClass"><small data-translate="f-values"> </small></div>
                 <div class="xsWidth">
                     <input class="form-control dirLeft" placeholder="Packets" id="packets" value="tlshello" />
                     <input class="form-control dirLeft" placeholder="Length" id="length" value="10-20" />
                     <input class="form-control dirLeft" placeholder="Interval" id="interval" value="10-20" />
                 </div>
                 <div class="muxForm none" id="muxForm">
-                    <div class="orClass"><small>مقدار Concurrency</small></div>
+                    <div class="orClass"><small data-translate="con-v"> </small></div>
                     <input class="form-control dirLeft" placeholder="Concurrency" id="concurrency" value="8" />
                 </div>
                 <div class="input-group fetchIps">
-                    <button class="btn btn-info" type="submit" id="getFile">
-                        ایجاد فایل JSON
+                    <button class="btn btn-info" type="submit" id="getFile" data-translate="create-json-btn">
                     </button>
                 </div>
                 <div class="clearfix"></div>
@@ -118,8 +130,8 @@
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th>آی‌پی</th>
-                                <th>عملیات</th>
+                                <th data-translate="ip"></th>
+                                <th data-translate="op"></th>
                             </tr>
                             </thead>
                             <tbody id="result"></tbody>
@@ -136,10 +148,10 @@
                     <div class="modal-dialog modal-sm">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">دونیت</h4>
+                                <h4 class="modal-title" data-translate="donate"></h4>
                             </div>
                             <div class="modal-body modalBodyOverflow">
-                                <p>درصورت تمایل برای دونیت می‌تونین از یکی‌از روش‌های زیر استفاده کنین:</p>
+                                <p data-translate="donate-w">درصورت تمایل برای دونیت می‌تونین از یکی‌از روش‌های زیر استفاده کنین:</p>
                                 <div class="dirLeft">
                                     <small>Buy me a coffee:</small>
                                     <br>
@@ -177,7 +189,7 @@
                     </div>
                 </div>
                 <footer>
-                    <p class="text-center">
+                    <p class="text-center" data-translate="footer-text">
                         © توسط
                         <a href="https://github.com/ircfspace/fragment" target="_blank">IRCF</a>
                         با کمک
@@ -189,6 +201,7 @@
                     <script src="./assets/js/jquery.min.js"></script>
                     <script src="./assets/js/bootstrap.min.js"></script>
                     <script src="./assets/js/script.js?v1.5.12"></script>
+                    <script src="./assets/js/language.js"></script>
                 </footer>
             </div>
         </div>
