@@ -158,7 +158,7 @@ $(document).on('keyup', '#defConfig', function(e) {
     else {
         $('#tls').prop('checked', false);
         $('#packets').val('1-1');
-        $('#length').val('3-5');
+        $('#length').val('1-3');
         $('#interval').val('5');
     }
     if ( protocol === 'vmess' ) {
@@ -233,7 +233,7 @@ $(document).on('click', '#tls', function(e) {
     }
     else {
         $('#packets').val('1-1');
-        $('#length').val('3-5');
+        $('#length').val('1-3');
         $('#interval').val('5');
         $('#sni').attr('placeholder', 'Host');
     }
