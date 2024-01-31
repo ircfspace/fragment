@@ -167,6 +167,27 @@ $(document).on('keyup', '#defConfig', function(e) {
     else {
         $('#cleanIp').val(defConfig.address);
     }
+    if ( typeof defConfig.allowInsecure !== "undefined" ) {
+        if ( protocol === 'vmess' ) {
+            if ( !defConfig.allowInsecure ) {
+                $('#insecure').prop('checked', false);
+            }
+            else {
+                $('#insecure').prop('checked', true);
+            }
+        }
+        else {
+            if ( defConfig.allowInsecure !== "1" ) {
+                $('#insecure').prop('checked', false);
+            }
+            else {
+                $('#insecure').prop('checked', true);
+            }
+        }
+    }
+    else {
+        $('#insecure').prop('checked', true);
+    }
     let path = setPath(defConfig.path);
     let early = $('#early').is(':checked');
     if ( early ) {
@@ -256,6 +277,7 @@ function generateJson() {
         let path = setPath($('#path').val());
         let tls = $('#tls').is(':checked');
         let mux = $('#mux').is(':checked');
+        let insecure = $('#insecure').is(':checked');
         let concurrency = $('#concurrency').val();
         let packets = $('#packets').val();
         let length = $('#length').val();
@@ -282,6 +304,7 @@ function generateJson() {
                     data.outbounds[0].mux.concurrency = Number(-1);
                 }
                 data.outbounds[0].streamSettings.network = "ws";
+                data.outbounds[0].streamSettings.tlsSettings.allowInsecure = (insecure ? true : false);
                 data.outbounds[0].streamSettings.tlsSettings.serverName = sni;
                 data.outbounds[0].streamSettings.wsSettings.headers.Host = sni;
                 data.outbounds[0].streamSettings.wsSettings.path = path;
