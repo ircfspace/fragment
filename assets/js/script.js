@@ -274,7 +274,7 @@ function generateJson() {
         let uuid = $('#uuid').val();
         let sni = cleanUrl($('#sni').val());
         let port = $('#port').val();
-        let path = setPath($('#path').val());
+        let path = $('#path').val();
         let tls = $('#tls').is(':checked');
         let mux = $('#mux').is(':checked');
         let insecure = $('#insecure').is(':checked');
