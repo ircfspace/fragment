@@ -20,6 +20,12 @@
 * https://t.me/ircfspace/185
 
 ---
+To participate in translating the tool into other languages, you can follow the steps below:
+
+https://github.com/ircfspace/fragment/tree/main/assets/lang
+
+
+---
 Thanks for @GFW-knocker's guidance.
 
 ---
