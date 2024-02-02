@@ -258,11 +258,11 @@ img[alt="loader"] {
 	width: 50%;
 }
 .fetchIps button:first-child {
-	width: calc(100% - 100px);
+	width: calc(100% - 130px);
 	border-radius: 0 5px 5px 0;
 }
 .fetchIps button:last-child {
-	width: 100px;
+	width: 130px;
 	border-radius: 5px 0 0 5px;
 	border-right: transparent;
 }
