@@ -29,7 +29,7 @@ async function changeLanguage(lang) {
     updateContent(langData);
     $('#flags li [data-lang]').removeClass('active');
     $('#flags li [data-lang="'+lang+'"]').addClass('active');
-    $('html').attr('lang', lang);
+    $('html').attr('lang', (lang === 'fa') ? 'fa' : 'en');
     //toggleArabicStylesheet(lang); // Toggle Arabic stylesheet
 }
 
@@ -37,8 +37,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     const userPreferredLanguage = localStorage.getItem('language') || 'fa';
     $('#flags li [data-lang]').removeClass('active');
     $('#flags li [data-lang="'+userPreferredLanguage+'"]').addClass('active');
-    $('html').attr('lang', userPreferredLanguage);
-    console.log(userPreferredLanguage)
+    $('html').attr('lang', (userPreferredLanguage === 'fa') ? 'fa' : 'en');
     const langData = await fetchLanguageData(userPreferredLanguage);
     updateContent(langData);
     //toggleArabicStylesheet(userPreferredLanguage);

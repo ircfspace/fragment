@@ -22,16 +22,17 @@ html[lang="en"] footer {
 }
 .flags li a {
 	float: left;
-	border: 3px solid transparent;
+	border: 2px solid transparent;
 }
 .flags li a.active {
 	border-color: #ccc;
 }
 .flags li img {
 	float: left;
-	width: 25px;
-	height: 15px;
+	width: 26px;
+	height: 17px;
 	object-fit: cover;
+	border: 1px solid #ccc;
 }
 
 html[lang="en"] .fetchIps button:first-child {
