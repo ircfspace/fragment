@@ -362,8 +362,6 @@ $(document).on('click', '#copyCode', function(e) {
     generateJson()
         .then(data => {
             data = JSON.stringify(data, null, 2);
-
-            // Create a temporary textarea element to copy the text
             const textarea = document.createElement('textarea');
             textarea.value = data;
             textarea.setAttribute('readonly', '');
