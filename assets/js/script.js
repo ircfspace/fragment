@@ -357,16 +357,21 @@ $(document).on('click', '#getFile', function(e) {
         });
 });
 
-$(document).on('click', '#copyCode', function(e) {
+$(document).on('click', '#copyCode', function (e) {
     e.preventDefault();
     generateJson()
-        .then(async data => {
-            let jsonCode = JSON.stringify(data, null, 2);
-            await navigator.clipboard.writeText(jsonCode);
+        .then(data => {
+            data = JSON.stringify(data, null, 2);
+            const input = document.createElement('input');
+            input.setAttribute('value', data);
+            document.body.appendChild(input);
+            input.select();
+            input.setSelectionRange(0, 99999);
+            document.execCommand('copy');
+            document.body.removeChild(input);
             alert('کد در کلیپ‌بورد کپی شد.');
         })
         .catch(error => {
-            // Handle errors here
             console.error(error);
         });
 });
