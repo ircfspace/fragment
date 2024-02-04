@@ -383,6 +383,16 @@ input:checked + .slider {
 	cursor: pointer;
 }
 
+.jsonOutput {
+	width: 1px;
+	height: 1px;
+	border: none;
+	outline: none;
+	color: #fff;
+	background: transparent;
+	margin: 0;
+}
+
 footer {
 	padding: 10px 0;
 	/*position: fixed;

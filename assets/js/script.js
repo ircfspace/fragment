@@ -362,13 +362,11 @@ $(document).on('click', '#copyCode', function (e) {
     generateJson()
         .then(data => {
             data = JSON.stringify(data, null, 2);
-            const input = document.createElement('input');
-            input.setAttribute('value', data);
-            document.body.appendChild(input);
+            document.getElementById("jsonOutput").value = data;
+            const input = document.getElementById('jsonOutput');
             input.select();
             input.setSelectionRange(0, 99999);
             document.execCommand('copy');
-            document.body.removeChild(input);
             alert('کد در کلیپ‌بورد کپی شد.');
         })
         .catch(error => {
