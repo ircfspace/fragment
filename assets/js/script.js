@@ -361,12 +361,21 @@ $(document).on('click', '#copyCode', function(e) {
     e.preventDefault();
     generateJson()
         .then(data => {
-            data = JSON.stringify(data, null, 2)
-            navigator.clipboard.writeText(data).then(() => {
-                alert('کد در کلیپ‌بورد کپی شد.');
-            }).catch(() => {
-                //alert('مشکلی پیش آمده است!');
-            });
+            data = JSON.stringify(data, null, 2);
+
+            // Create a temporary textarea element to copy the text
+            const textarea = document.createElement('textarea');
+            textarea.value = data;
+            textarea.setAttribute('readonly', '');
+            textarea.style.position = 'absolute';
+            textarea.style.left = '-9999px';
+            textarea.style.width = '1px';
+            textarea.style.height = '1px';
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            alert('کد در کلیپ‌بورد کپی شد.');
         })
         .catch(error => {
             // Handle errors here
