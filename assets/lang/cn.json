@@ -23,7 +23,7 @@
 	"config_switch_mux": "Mux",
 	"config_switch_mux_tooltip": "提高连接建立速度，减少发送和接收数据的延迟",
 	"config_switch_direct_rule": "路由规则",
-	"config_switch_direct_rule_tooltip": "路由规则（将流量引导至伊朗、中国和俄罗斯的IP和域名 + 在谷歌、微软、Meta等使用IPv4",
+	"config_switch_direct_rule_tooltip": "导航规则（在IR和CN中指导IP和域名的流量）",
 	"config_mux_label": "并发值",
 	"config_mux_concurrency": "并发",
 	"config_mux_concurrency_tooltip": "选择一个介于1到1024之间的数字（建议将8作为默认值）",

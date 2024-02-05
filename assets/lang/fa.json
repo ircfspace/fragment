@@ -23,7 +23,7 @@
 	"config_switch_mux": "Mux",
 	"config_switch_mux_tooltip": "بهبود سرعت برقراری اتصال و کاهش زمان تاخیر در ارسال\u200Cودریافت داده\u200Cها",
 	"config_switch_direct_rule": "Routing Rules",
-	"config_switch_direct_rule_tooltip": "قوانین مسیریابی (مستقیم\u200Cکردن ترافیک آی\u200Cپی و دامنه\u200Cهای ایران، چین و روسیه + استفاده از IPv4 برای گوگل، مایکروسافت، متا و ...)",
+	"config_switch_direct_rule_tooltip": "قوانین مسیریابی (مستقیم\u200Cکردن ترافیک آی\u200Cپی و دامنه\u200Cهای ایران و چین)",
 	"config_mux_label": "مقدار Concurrency",
 	"config_mux_concurrency": "concurrency",
 	"config_mux_concurrency_tooltip": "یکی\u200Cاز اعداد مابین ۸ تا ۱۶ را انتخاب کنید (۸ به\u200Cعنوان مقدار پیشفرض پیشنهاد می\u200Cشود)",
