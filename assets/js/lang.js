@@ -11,6 +11,13 @@ function updateContent(langData) {
             element.placeholder = langData[label];
         }
     });
+    document.querySelectorAll('[data-i18n-title]').forEach(element => {
+        const title = element.getAttribute('data-i18n-title');
+        if (title) {
+            element.title = langData[title];
+            element.setAttribute('data-original-title', langData[title]);
+        }
+    });
 }
 
 function setLanguagePreference(lang) {
@@ -19,7 +26,7 @@ function setLanguagePreference(lang) {
 }
 
 async function fetchLanguageData(lang) {
-    const response = await fetch("assets/lang/"+lang+".json?v1.1");
+    const response = await fetch("assets/lang/"+lang+".json?v1.2");
     return response.json();
 }
 

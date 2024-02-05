@@ -4,7 +4,7 @@
         <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
         <link href="./assets/css/bootstrap-rtl.min.css" rel="stylesheet" />
         <link href="./assets/css/vazir.css" rel="stylesheet" />
-        <link href="./assets/css/style.css?v1.8.9" rel="stylesheet" />
+        <link href="./assets/css/style.css?v1.8.10" rel="stylesheet" />
         <link href="./assets/css/lang.css?v1.1" rel="stylesheet" />
         <title>IRCF | ابزار فرگمنت</title>
         <meta name="description" content="آی پی سالم و تمیز برای کلودفلر (کلادفلر) جهت دسترسی به اینترنت آزاد" />
@@ -96,45 +96,45 @@
                     <input class="form-control dirLeft" data-i18n-label="config_form_port" id="port" type="number" min="0" />
                 </div>
                 <div class="xsWidth">
-                    <input class="form-control dirLeft" data-i18n-label="config_form_cleanip" id="cleanIp" />
+                    <input class="form-control dirLeft" data-i18n-label="config_form_cleanip" id="cleanIp" data-toggle="tooltip" data-placement="top" data-i18n-title="config_form_cleanip_tooltip" />
                     <input class="form-control dirLeft" data-i18n-label="config_form_sni" id="sni" />
                     <input class="form-control dirLeft" data-i18n-label="config_form_path" id="path" />
                 </div>
                 <div class="clearfix"></div>
-                <label class="switch">
+                <label class="switch" data-toggle="tooltip" data-placement="top" data-i18n-title="config_switch_tls_tooltip">
                     <input type="checkbox" id="tls" checked />
                     <span class="slider round"></span>
                     <strong data-i18n="config_switch_tls"></strong>
                 </label>
-                <label class="switch">
+                <label class="switch" data-toggle="tooltip" data-placement="top" data-i18n-title="config_switch_insecure_tooltip">
                     <input type="checkbox" id="insecure" checked />
                     <span class="slider round"></span>
-                    <strong id="secureLabel" title="Allow Insecure" data-i18n="config_switch_insecure"></strong>
+                    <strong id="secureLabel" data-i18n="config_switch_insecure"></strong>
                 </label>
-                <label class="switch">
+                <label class="switch" data-toggle="tooltip" data-placement="top" data-i18n-title="config_switch_earlydata_tooltip">
                     <input type="checkbox" id="early" />
                     <span class="slider round"></span>
                     <strong data-i18n="config_switch_earlydata"></strong>
                 </label>
-                <label class="switch">
+                <label class="switch" data-toggle="tooltip" data-placement="top" data-i18n-title="config_switch_mux_tooltip">
                     <input type="checkbox" id="mux" />
                     <span class="slider round"></span>
                     <strong data-i18n="config_switch_mux"></strong>
                 </label>
-                <label class="switch">
+                <label class="switch" data-toggle="tooltip" data-placement="top" data-i18n-title="config_switch_direct_rule_tooltip">
                     <input type="checkbox" id="direct" checked />
                     <span class="slider round"></span>
                     <strong data-i18n="config_switch_direct_rule"></strong>
                 </label>
                 <div class="orClass"><small data-i18n="config_fragment_label"></small></div>
                 <div class="xsWidth">
-                    <input class="form-control dirLeft" data-i18n-label="config_fragment_packets" title="Packets" id="packets" value="tlshello" />
-                    <input class="form-control dirLeft" data-i18n-label="config_fragment_length" title="Length" id="length" value="10-20" />
-                    <input class="form-control dirLeft" data-i18n-label="config_fragment_interval" title="Interval" id="interval" value="10-20" />
+                    <input class="form-control dirLeft" data-i18n-label="config_fragment_packets" data-toggle="tooltip" data-placement="top" data-i18n-title="config_fragment_packets" id="packets" value="tlshello" />
+                    <input class="form-control dirLeft" data-i18n-label="config_fragment_length" data-toggle="tooltip" data-placement="top" data-i18n-title="config_fragment_length" id="length" value="10-20" />
+                    <input class="form-control dirLeft" data-i18n-label="config_fragment_interval" data-toggle="tooltip" data-placement="top" data-i18n-title="config_fragment_interval" id="interval" value="10-20" />
                 </div>
                 <div class="muxForm none" id="muxForm">
                     <div class="orClass"><small data-i18n="config_mux_label"></small></div>
-                    <input class="form-control dirLeft" data-i18n-label="config_mux_concurrency" id="concurrency" value="8" />
+                    <input class="form-control dirLeft" data-i18n-label="config_mux_concurrency" id="concurrency" value="8" data-toggle="tooltip" data-placement="top" data-i18n-title="config_mux_concurrency_tooltip" />
                 </div>
                 <div class="input-group fetchIps">
                     <button class="btn btn-info" type="submit" id="getFile" data-i18n="config_form_submit"></button>
@@ -200,8 +200,8 @@
                     </div>
                     <script src="./assets/js/jquery.min.js"></script>
                     <script src="./assets/js/bootstrap.min.js"></script>
-                    <script src="./assets/js/lang.js?v1.3"></script>
-                    <script src="./assets/js/script.js?v1.8.9"></script>
+                    <script src="./assets/js/lang.js?v1.4"></script>
+                    <script src="./assets/js/script.js?v1.8.10"></script>
                 </footer>
             </div>
         </div>

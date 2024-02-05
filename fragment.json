@@ -157,8 +157,24 @@
         "outboundTag": "direct",
         "ip": [
           "geoip:private",
+          "geoip:ru",
           "geoip:cn",
           "geoip:ir"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "5425034033205580638",
+        "type": "field",
+        "outboundTag": "IPv4",
+        "domain": [
+          "domain:google.com",
+          "domain:youtube.com",
+          "geosite:google",
+          "geosite:netflix",
+          "geosite:meta",
+          "geosite:microsoft",
+          "geosite:adobe"
         ],
         "enabled": true
       },
