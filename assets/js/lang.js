@@ -14,7 +14,7 @@ function updateContent(langData) {
     document.querySelectorAll('[data-i18n-title]').forEach(element => {
         const title = element.getAttribute('data-i18n-title');
         if (title) {
-            element.title = langData[title];
+            element.removeAttribute('title');
             element.setAttribute('data-original-title', langData[title]);
         }
     });
