@@ -169,24 +169,39 @@ $(document).on('keyup', '#defConfig', function(e) {
     }
     if ( typeof defConfig.allowInsecure !== "undefined" ) {
         if ( protocol === 'vmess' ) {
-            if ( !defConfig.allowInsecure ) {
-                $('#insecure').prop('checked', false);
+            if ( defConfig.allowInsecure ) {
+                $('#insecure').prop('checked', true);
             }
             else {
-                $('#insecure').prop('checked', true);
+                $('#insecure').prop('checked', false);
             }
         }
         else {
-            if ( defConfig.allowInsecure !== "1" ) {
-                $('#insecure').prop('checked', false);
+            if ( defConfig.allowInsecure === "1" ) {
+                $('#insecure').prop('checked', true);
             }
             else {
-                $('#insecure').prop('checked', true);
+                $('#insecure').prop('checked', false);
             }
         }
     }
     else {
-        $('#insecure').prop('checked', true);
+        if ( protocol === 'vmess' ) {
+            if ( defConfig.tls !== "tls" ) {
+                $('#insecure').prop('checked', true);
+            }
+            else {
+                $('#insecure').prop('checked', false);
+            }
+        }
+        else {
+            if ( defConfig.security !== "tls" ) {
+                $('#insecure').prop('checked', true);
+            }
+            else {
+                $('#insecure').prop('checked', false);
+            }
+        }
     }
     let path = setPath(defConfig.path);
     let early = $('#early').is(':checked');
