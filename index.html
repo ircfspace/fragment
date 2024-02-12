@@ -4,8 +4,8 @@
         <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
         <link href="./assets/css/bootstrap-rtl.min.css" rel="stylesheet" />
         <link href="./assets/css/vazir.css" rel="stylesheet" />
-        <link href="./assets/css/style.css?v1.8.11" rel="stylesheet" />
-        <link href="./assets/css/lang.css?v1.1" rel="stylesheet" />
+        <link href="./assets/css/style.css?v1.9" rel="stylesheet" />
+        <link href="./assets/css/lang.css?v1.9" rel="stylesheet" />
         <title>IRCF | ابزار فرگمنت</title>
         <meta name="description" content="آی پی سالم و تمیز برای کلودفلر (کلادفلر) جهت دسترسی به اینترنت آزاد" />
         <meta name="keywords" content="کلودفلر, کلادفلر, cloudflare, cf, آی پی تمیز, آی پی سالم, اسکن آی پی" />
@@ -89,8 +89,12 @@
                 <p data-i18n="config_form_label"></p>
                 <div class="xsWidth withSmallCenter">
                     <select class="form-control dirLeft" id="protocol">
-                        <option value="vless">VLESS (WS)</option>
-                        <option value="vmess">VMESS (WS)</option>
+                        <option value="vless">VLESS</option>
+                        <option value="vmess">VMESS</option>
+                    </select>
+                    <select class="form-control dirLeft" id="stream">
+                        <option value="ws">WS</option>
+                        <option value="grpc">GRPS</option>
                     </select>
                     <input class="form-control dirLeft" data-i18n-label="config_form_uuid" id="uuid" />
                     <input class="form-control dirLeft" data-i18n-label="config_form_port" id="port" type="number" min="0" />
@@ -99,6 +103,13 @@
                     <input class="form-control dirLeft" data-i18n-label="config_form_cleanip" id="cleanIp" data-toggle="tooltip" data-i18n-title="config_form_cleanip_tooltip" />
                     <input class="form-control dirLeft" data-i18n-label="config_form_sni" id="sni" />
                     <input class="form-control dirLeft" data-i18n-label="config_form_path" id="path" />
+                </div>
+                <div class="minWidth none" id="grpcOnly">
+                    <select class="form-control dirLeft" id="grpcMode">
+                        <option value="gun">gunMode</option>
+                        <option value="multi">multiMode</option>
+                    </select>
+                    <input class="form-control dirLeft" data-i18n-label="config_form_serviceName" id="serviceName" />
                 </div>
                 <div class="clearfix"></div>
                 <label class="switch" data-toggle="tooltip" data-i18n-title="config_switch_tls_tooltip">
@@ -137,8 +148,21 @@
                     <input class="form-control dirLeft" data-i18n-label="config_mux_concurrency" id="concurrency" value="8" data-toggle="tooltip" data-i18n-title="config_mux_concurrency_tooltip" />
                 </div>
                 <div class="input-group fetchIps">
-                    <button class="btn btn-info" type="submit" id="getFile" data-i18n="config_form_submit"></button>
-                    <button class="btn btn-default active" id="copyCode" data-i18n="config_form_copy"></button>
+                    <button class="btn btn-info" type="submit" id="jsonUrl" data-i18n="config_form_jsonurl"></button>
+                    <div class="input-group-btn">
+                        <div class="btn-group">
+                            <div class="btn-group scanOpt">
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" id="newScan">
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="javascript:;" id="copyCode" data-i18n="config_form_copy"></a></li>
+                                    <li><a href="javascript:;" id="getFile" data-i18n="config_form_submit"></a></li>
+                                    <li><a href="javascript:;" id="copyUrl" data-i18n="config_form_copyurl"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="clearfix"></div>
                 <textarea id="jsonOutput" class="jsonOutput"></textarea>
@@ -200,8 +224,8 @@
                     </div>
                     <script src="./assets/js/jquery.min.js"></script>
                     <script src="./assets/js/bootstrap.min.js"></script>
-                    <script src="./assets/js/lang.js?v1.6"></script>
-                    <script src="./assets/js/script.js?v1.8.13"></script>
+                    <script src="./assets/js/lang.js?v1.3.1"></script>
+                    <script src="./assets/js/script.js?v1.9"></script>
                 </footer>
             </div>
         </div>
