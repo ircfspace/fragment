@@ -174,13 +174,17 @@ $(document).on('keyup', '#defConfig', function(e) {
         $('#grpcMode option').removeAttr('selected');
         $('#grpcMode option[value="'+ (defConfig.type
         === 'multi' ? 'multi' : 'gun') +'"]').attr('selected', 'selected').prop('selected', true);
-        $('#serviceName').val(defConfig.path);
+        if ( defConfig.net !== 'ws' ) {
+            $('#serviceName').val(defConfig.path);
+        }
     }
     else {
         $('#cleanIp').val(defConfig.address);
         $('#grpcMode option').removeAttr('selected');
         $('#grpcMode option[value="'+ (defConfig.mode === 'multi' ? 'multi' : 'gun') +'"]').attr('selected', 'selected').prop('selected', true);
-        $('#serviceName').val(defConfig.serviceName);
+        if ( defConfig.type !== 'ws' ) {
+            $('#serviceName').val(defConfig.serviceName);
+        }
     }
     if ( typeof defConfig.allowInsecure !== "undefined" ) {
         if ( protocol === 'vmess' ) {
@@ -222,7 +226,7 @@ $(document).on('keyup', '#defConfig', function(e) {
     if ( stream !== 'ws' ) {
         $('#early').prop('checked', false);
     }
-    let path = setPath(defConfig.type === 'ws' ? defConfig.path : "");
+    let path = setPath(protocol !== 'vmess' && defConfig.type === 'ws' || protocol === 'vmess' && defConfig.net === 'ws' ? defConfig.path : "");
     let early = $('#early').is(':checked');
     if ( early && stream === 'ws' ) {
         path = path+'?ed=2048';
