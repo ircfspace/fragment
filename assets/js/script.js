@@ -335,6 +335,7 @@ function generateJson() {
             cleanIp = 'zula.ir';
         }
         let direct = $('#direct').is(':checked');
+        let appName = $('input[name="app"]:checked').attr('id');
         if ( uuid === '' || sni === ''|| port === '' ) {
             alert('فرم را تکمیل نمایید.');
             return false;
@@ -342,6 +343,15 @@ function generateJson() {
         fetch('fragment.json?v1.6')
             .then(response => response.json())
             .then(data => {
+                let socksPort, httpPort;
+                if (appName === 'nekoray') {
+                    data.inbounds[0].port = 2080;
+                    data.inbounds[1].port = 2081;
+                }
+                else {
+                    data.inbounds[0].port = 10808;
+                    data.inbounds[1].port = 10809;
+                }
                 data.outbounds[0].protocol = protocol;
                 if ( mux ) {
                     data.outbounds[0].mux.enabled = true;
@@ -400,6 +410,7 @@ function generateJson() {
                     '&grpcMode*IRCF*'+grpcMode+
                     '&serviceName*IRCF*'+serviceName+
                     '&cleanIp*IRCF*'+cleanIp+
+                    '&appName*IRCF*'+appName+
                     '&directRules*IRCF*'+direct
                 ]);
             })
@@ -496,4 +507,14 @@ window.addEventListener('load', function() {
         placement: "top",
         trigger: "hover",
     })
+});
+
+$(document).on('change', 'input[type="radio"][name="app"]', function(e) {
+    e.preventDefault();
+    console.log($(this).attr('id'))
+    let direct = $('#direct').is(':checked');
+    let napsternetV = document.getElementById('napsternetV').checked;
+    if ( napsternetV && direct ) {
+        $('#direct').trigger('click');
+    }
 });

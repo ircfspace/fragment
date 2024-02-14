@@ -43,3 +43,16 @@ html[lang="en"] .fetchIps button:last-child {
 	border-right: 1px solid #adadad;
 	border-left: inherit;
 }
+
+html[lang="en"] .rangeSelector input[type="checkbox"],
+html[lang="en"] .rangeSelector input[type="radio"] {
+	float: left;
+	margin-right: 10px;
+	margin-left: 0;
+}
+html[lang="en"] .rangeSelector label,
+html[lang="en"] .rangeSelector label {
+	float: left;
+	margin-right: 20px;
+	margin-left: 0;
+}

@@ -34,5 +34,7 @@
 	"config_fragment_label": "片段的值",
 	"config_fragment_packets": "数据包",
 	"config_fragment_length": "长度",
-	"config_fragment_interval": "间隔"
+	"config_fragment_interval": "间隔",
+	"config_app_name_label": "兼容性",
+	"config_app_name_all": "所有应用"
 }

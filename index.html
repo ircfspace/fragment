@@ -4,8 +4,8 @@
         <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
         <link href="./assets/css/bootstrap-rtl.min.css" rel="stylesheet" />
         <link href="./assets/css/vazir.css" rel="stylesheet" />
-        <link href="./assets/css/style.css?v1.10" rel="stylesheet" />
-        <link href="./assets/css/lang.css?v1.10" rel="stylesheet" />
+        <link href="./assets/css/style.css?v1.11" rel="stylesheet" />
+        <link href="./assets/css/lang.css?v1.11" rel="stylesheet" />
         <title>IRCF | ابزار فرگمنت</title>
         <meta name="description" content="توسط ابزار فرگمنت می‌تونین دامنه‌های مرده‌تون رو مجدد زنده کنید!" />
         <meta name="keywords" content="کلودفلر, کلادفلر, cloudflare, cf, آی پی تمیز, آی پی سالم, اسکن آی پی" />
@@ -147,6 +147,17 @@
                     <div class="orClass"><small data-i18n="config_mux_label"></small></div>
                     <input class="form-control dirLeft" data-i18n-label="config_mux_concurrency" id="concurrency" value="8" data-toggle="tooltip" data-i18n-title="config_mux_concurrency_tooltip" />
                 </div>
+                <div class="orClass"><small data-i18n="config_app_name_label"></small></div>
+                <div class="betaVersion rangeSelector">
+                    <input type="radio" name="app" id="allApp" value="1" checked />
+                    <label for="allApp" data-i18n="config_app_name_all"></label>
+                    <div class="clearfix"></div>
+                    <input type="radio" name="app" id="nekoray" value="1" />
+                    <label for="nekoray">Nekoray</label>
+                    <div class="clearfix"></div>
+                    <input type="radio" name="app" id="napsternetV" value="1" />
+                    <label for="napsternetV">NapsternetV</label>
+                </div>
                 <div class="clearfix"></div>
                 <div class="input-group fetchIps">
                     <button class="btn btn-info" type="submit" id="getFile" data-i18n="config_form_submit"></button>
@@ -244,8 +255,8 @@
                     </div>
                     <script src="./assets/js/jquery.min.js"></script>
                     <script src="./assets/js/bootstrap.min.js"></script>
-                    <script src="./assets/js/lang.js?v1.3.2"></script>
-                    <script src="./assets/js/script.js?v1.10.2"></script>
+                    <script src="./assets/js/lang.js?v1.11"></script>
+                    <script src="./assets/js/script.js?v1.11"></script>
                 </footer>
             </div>
         </div>
