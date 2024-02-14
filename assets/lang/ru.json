@@ -35,5 +35,6 @@
 	"config_fragment_packets": "Пакеты",
 	"config_fragment_length": "Длина",
 	"config_fragment_interval": "Интервал",
-	"app_name_label": "Имя приложения"
+	"config_app_name_label": "Совместимость",
+	"config_app_name_all": "Все приложения"
 }

@@ -35,5 +35,6 @@
 	"config_fragment_packets": "Packets",
 	"config_fragment_length": "Length",
 	"config_fragment_interval": "Interval",
-	"app_name_label": "نام برنامه"
+	"config_app_name_label": "سازگاری",
+	"config_app_name_all": "همه برنامه\u200Cها"
 }
