@@ -402,6 +402,18 @@ input:checked + .slider {
 	padding: 0;
 }
 
+.qrcode img {
+	width: 100%;
+	height: auto;
+}
+
+.modal-header .close {
+	float: right;
+	width: auto;
+	margin: 0px 0 -7px 0;
+	font-size: 30px;
+}
+
 .tooltip .tooltip-inner {
 	font: 11px vazir;
 }
