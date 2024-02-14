@@ -11,6 +11,8 @@
 * VMESS [Websocket]
 * VLESS [GRPC]
 * VMESS [GRPC]
+* TROJAN [Websocket]
+* TROJAN [GRPC]
 ---
 
 ### لینکهای کاربردی در رابطه با فرگمنت :

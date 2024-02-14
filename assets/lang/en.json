@@ -1,6 +1,6 @@
 {
 	"welcome_message": "Using the Fragment tool, you can revive your dead domains!",
-	"config_input": "Provide a VLESS/VMESS configuration with WS/GRPC type:",
+	"config_input": "Provide a VLESS/VMESS/TROJAN configuration with WS/GRPC type:",
 	"config_input_label": "Your Config",
 	"config_input_submit": "Check",
 	"config_form_ortext": "OR",
