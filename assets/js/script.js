@@ -384,7 +384,7 @@ function generateJson() {
                 }
                 resolve([
                     data,
-                    'protocol='+protocol+'&network='+stream+'&uuid='+uuid+'&sni='+sni+'&port='+port+'&path='+path+'&tls='+tls+'&insecure='+insecure+'&mux='+mux+'&concurrency='+concurrency+'&packets='+packets+'&lenght='+length+'&interval='+interval+'&grpcMode='+grpcMode+'&serviceName='+serviceName+'&cleanIp='+cleanIp+'&directRules='+direct
+                    'protocol*IRCF*'+protocol+'&network*IRCF*'+stream+'&uuid*IRCF*'+uuid+'&sni*IRCF*'+sni+'&port*IRCF*'+port+'&path*IRCF*'+path+'&tls*IRCF*'+tls+'&insecure*IRCF*'+insecure+'&mux*IRCF*'+mux+'&concurrency*IRCF*'+concurrency+'&packets*IRCF*'+packets+'&lenght*IRCF*'+length+'&interval*IRCF*'+interval+'&grpcMode*IRCF*'+grpcMode+'&serviceName*IRCF*'+serviceName+'&cleanIp*IRCF*'+cleanIp+'&directRules*IRCF*'+direct
                 ]);
             })
             .catch(error => {
