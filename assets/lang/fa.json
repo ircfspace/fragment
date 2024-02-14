@@ -19,6 +19,7 @@
 	"config_form_jsonurl": "مشاهده کد",
 	"config_form_convert": "تبدیل به فرگمنت",
 	"config_form_qrcode": "QR CODE",
+	"config_form_qrcode_alert": "بعد از اسکن کد کیوآر ممکنه توی بعضی\u200Cاز اپ\u200Cها به انجام «بروزرسانی اشتراک» نیاز باشه.",
 	"config_switch_tls": "TLS",
 	"config_switch_tls_tooltip": "امکان سوییچ بین حالت TLS Fragment و TCP Segment",
 	"config_switch_insecure": "Insecure",

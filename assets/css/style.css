@@ -425,6 +425,9 @@ input:checked + .slider {
 .modal-footer button:nth-child(even) {
 	width: calc(50% - 5px)
 }
+.modal-body .alert {
+	margin: 0;
+}
 
 .tooltip .tooltip-inner {
 	font: 11px vazir;
