@@ -522,3 +522,7 @@ $(document).on('change', 'input[type="radio"][name="app"]', function(e) {
         $('#direct').trigger('click');
     }
 });
+
+function copyCode() {
+    $("#copyCode").click();
+}

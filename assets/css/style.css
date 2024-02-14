@@ -242,33 +242,8 @@ img[alt="loader"] {
 	background-color: #ff7900;
 }
 
-.fetchIps select {
-	float: right;
-	width: 60% !important;
-}
-.fetchIps .input-group-btn {
-	float: left;
-	width: 33px !important;
-}
-.fetchIps .input-group-btn button {
-	float: right;
-	width: 100% !important;
-}
-.fetchIps button {
-	width: 50%;
-}
-.fetchIps button:first-child {
-	width: calc(100% - 34px);
-	border-radius: 0 5px 5px 0;
-}
-.fetchIps button:last-child {
-	width: 130px;
-	border-radius: 5px 0 0 5px;
-	border-right: transparent;
-}
-.fetchIps .open>.dropdown-menu {
-	left: 0;
-	right: inherit;
+.fetchIps a[type='submit']{
+	width: 10%;
 }
 
 .minWidth {
