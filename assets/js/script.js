@@ -455,7 +455,7 @@ $(document).on('click', '#getFile', function(e) {
         });
 });
 
-$(document).on('click', '#copyCode', function (e) {
+$(document).on('click', '#copyCode, #copyJsonFromQR', function (e) {
     e.preventDefault();
     generateJson()
         .then(data => {
@@ -465,6 +465,7 @@ $(document).on('click', '#copyCode', function (e) {
             input.select();
             input.setSelectionRange(0, 99999);
             document.execCommand('copy');
+            $("#qrModal").modal('hide');
             alert('کد در کلیپ‌بورد کپی شد.');
         })
         .catch(error => {

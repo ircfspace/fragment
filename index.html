@@ -4,7 +4,7 @@
         <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
         <link href="./assets/css/bootstrap-rtl.min.css" rel="stylesheet" />
         <link href="./assets/css/vazir.css" rel="stylesheet" />
-        <link href="./assets/css/style.css?v1.11" rel="stylesheet" />
+        <link href="./assets/css/style.css?v1.12.1" rel="stylesheet" />
         <link href="./assets/css/lang.css?v1.11" rel="stylesheet" />
         <title>IRCF | ابزار فرگمنت</title>
         <meta name="description" content="توسط ابزار فرگمنت می‌تونین دامنه‌های مرده‌تون رو مجدد زنده کنید!" />
@@ -160,23 +160,7 @@
                     <label for="napsternetV" data-toggle="tooltip" data-i18n-title="config_app_name_napsternetV_tooltip">NapsternetV</label>
                 </div>
                 <div class="clearfix"></div>
-                <div class="input-group fetchIps">
-                    <button class="btn btn-info" type="submit" id="getFile" data-i18n="config_form_submit"></button>
-                    <div class="input-group-btn">
-                        <div class="btn-group">
-                            <div class="btn-group scanOpt">
-                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" id="newScan">
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li class="hidden"><a href="javascript:;" id="jsonUrl" data-i18n="config_form_jsonurl"></a></li>
-                                    <li><a href="javascript:;" id="qrGen" data-i18n="config_form_qrcode"></a></li>
-                                    <li><a href="javascript:;" id="copyCode" data-i18n="config_form_copy"></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <button class="btn btn-info" type="submit" id="qrGen" data-i18n="config_form_convert"></button>
                 <div class="clearfix"></div>
                 <textarea id="jsonOutput" class="jsonOutput"></textarea>
                 <div class="clearfix"></div>
@@ -234,12 +218,17 @@
                             </div>
                             <div class="modal-body">
                                 <div class="qrcode" id="qrcode">
-                                    <img src="" alt="qrcode" />
+                                    <a href="javascript:;" id="copyJsonFromQR">
+                                        <img src="" alt="qrcode" />
+                                    </a>
                                     <input class="form-control dirLeft" value="" />
                                 </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" id="copyUrl" data-i18n="config_form_copyurl"></button>
+                                <button type="button" class="btn btn-default" id="jsonUrl" data-i18n="config_form_jsonurl"></button>
+                                <button type="button" class="btn btn-default" id="getFile" data-i18n="config_form_submit"></button>
+                                <button type="button" class="btn btn-default" id="copyCode" data-i18n="config_form_copy"></button>
                             </div>
                         </div>
                     </div>
@@ -256,8 +245,8 @@
                     </div>
                     <script src="./assets/js/jquery.min.js"></script>
                     <script src="./assets/js/bootstrap.min.js"></script>
-                    <script src="./assets/js/lang.js?v1.12"></script>
-                    <script src="./assets/js/script.js?v1.12"></script>
+                    <script src="./assets/js/lang.js?v1.12.1"></script>
+                    <script src="./assets/js/script.js?v1.12.1"></script>
                 </footer>
             </div>
         </div>
