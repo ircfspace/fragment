@@ -360,18 +360,9 @@ $(document).on('click', '#getFile', function(e) {
 $(document).on('click', '#copyCode', function(e) {
     e.preventDefault();
     generateJson()
-        .then(data => {
-            data = JSON.stringify(data, null, 2);
-            const textarea = document.createElement('textarea');
-            textarea.textContent = data;
-            textarea.style.position = 'absolute';
-            textarea.style.left = '-100px';
-            textarea.style.width = '1px';
-            textarea.style.height = '1px';
-            document.body.append(textarea);
-            textarea.select();
-            document.execCommand('copy');
-            textarea.remove();
+        .then(async data => {
+            let jsonCode = JSON.stringify(data, null, 2);
+            await navigator.clipboard.writeText(jsonCode);
             alert('کد در کلیپ‌بورد کپی شد.');
         })
         .catch(error => {
