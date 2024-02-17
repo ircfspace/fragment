@@ -301,7 +301,7 @@ $(document).on('click', '#getFile', function(e) {
             }
             //console.log(data)
             $.ajax({
-                url: 'http://pastes.io/api/paste/create',
+                url: 'https://pastes.io/api/paste/create',
                 type: 'POST',
                 dataType: 'json',
                 data: {
