@@ -247,8 +247,8 @@ img[alt="loader"] {
 	width: 60% !important;
 }
 .fetchIps .input-group-btn {
-	float: right;
-	width: 40% !important;
+	float: left;
+	width: 33px !important;
 }
 .fetchIps .input-group-btn button {
 	float: right;
@@ -258,13 +258,17 @@ img[alt="loader"] {
 	width: 50%;
 }
 .fetchIps button:first-child {
-	width: calc(100% - 130px);
+	width: calc(100% - 34px);
 	border-radius: 0 5px 5px 0;
 }
 .fetchIps button:last-child {
 	width: 130px;
 	border-radius: 5px 0 0 5px;
 	border-right: transparent;
+}
+.fetchIps .open>.dropdown-menu {
+	left: 0;
+	right: inherit;
 }
 
 .minWidth {
@@ -309,15 +313,19 @@ img[alt="loader"] {
 }
 .xsWidth.withSmallCenter select:first-child,
 .xsWidth.withSmallCenter input:first-child {
-	width: 150px;
+	width: 95px;
 }
 .xsWidth.withSmallCenter select:nth-child(2),
 .xsWidth.withSmallCenter input:nth-child(2) {
-	width: calc(100% - 250px);
+	width: 85px;
+}
+.xsWidth.withSmallCenter select:nth-child(3),
+.xsWidth.withSmallCenter input:nth-child(3) {
+	width: calc(100% - 260px);
 }
 .xsWidth.withSmallCenter select:last-child,
 .xsWidth.withSmallCenter input:last-child {
-	width: 100px;
+	width: 80px;
 }
 
 p {
@@ -446,5 +454,26 @@ footer p {
 	.fullBox .leftSide textarea {
 		margin-top: 10px;
 		height: 70px;
+	}
+}
+
+@media(max-width:370px) {
+	.xsWidth.withSmallCenter select:first-child,
+	.xsWidth.withSmallCenter input:first-child {
+		width: 50%;
+	}
+	.xsWidth.withSmallCenter select:nth-child(2),
+	.xsWidth.withSmallCenter input:nth-child(2) {
+		width: 50%;
+	}
+	.xsWidth.withSmallCenter select:nth-child(3),
+	.xsWidth.withSmallCenter input:nth-child(3) {
+		width: 50%;
+		margin-top: -5px;
+	}
+	.xsWidth.withSmallCenter select:last-child,
+	.xsWidth.withSmallCenter input:last-child {
+		width: 50%;
+		margin-top: -5px;
 	}
 }

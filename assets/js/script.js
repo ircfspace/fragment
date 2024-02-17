@@ -131,18 +131,21 @@ $(document).on('keyup', '#defConfig', function(e) {
         return false;
     }
     $('#protocol option').removeAttr('selected');
-    $('#protocol option[value="'+protocol+'"]').attr('selected', 'selected');
+    $('#protocol option[value="'+protocol+'"]').attr('selected', 'selected').prop('selected', true);
     let defConfig = parser(protocol, config);
-    if ( protocol === 'vmess' && ["grpc", "reality", "tcp", "quic"].includes(defConfig.tls) ) {
-        alert('نوع کانفیگ باید وب‌سوکت باشد!');
+    //console.log(defConfig)
+    if ( protocol === 'vmess' && ["reality", "tcp"].includes(defConfig.tls) ) {
+        alert('نوع کانفیگ باید WS/GRPC باشد!');
         resetForm();
         return false;
     }
-    if ( protocol === 'vless' && ["grpc", "reality", "tcp", "quic"].includes(defConfig.security) ) {
-        alert('نوع کانفیگ باید وب‌سوکت باشد!');
+    if ( protocol === 'vless' && ["reality", "tcp"].includes(defConfig.security) ) {
+        alert('نوع کانفیگ باید WS/GRPC باشد!');
         resetForm();
         return false;
     }
+    $('#stream option').removeAttr('selected');
+    $('#stream option[value="'+ (defConfig.type === 'ws' ? 'ws' : 'grpc') +'"]').attr('selected', 'selected').prop('selected', true).trigger('change');
     let port = String(getAddress(config)[1]).replace('/', '');
     $('#port').val(port);
     $('#sni').val(defConfig.host);
@@ -163,9 +166,16 @@ $(document).on('keyup', '#defConfig', function(e) {
     }
     if ( protocol === 'vmess' ) {
         $('#cleanIp').val(defConfig.add);
+        $('#grpcMode option').removeAttr('selected');
+        $('#grpcMode option[value="'+ (defConfig.type
+        === 'multi' ? 'multi' : 'gun') +'"]').attr('selected', 'selected').prop('selected', true);
+        $('#serviceName').val(defConfig.path);
     }
     else {
         $('#cleanIp').val(defConfig.address);
+        $('#grpcMode option').removeAttr('selected');
+        $('#grpcMode option[value="'+ (defConfig.mode === 'multi' ? 'multi' : 'gun') +'"]').attr('selected', 'selected').prop('selected', true);
+        $('#serviceName').val(defConfig.serviceName);
     }
     if ( typeof defConfig.allowInsecure !== "undefined" ) {
         if ( protocol === 'vmess' ) {
@@ -203,9 +213,13 @@ $(document).on('keyup', '#defConfig', function(e) {
             }
         }
     }
-    let path = setPath(defConfig.path);
+    let stream = $('#stream').val();
+    if ( stream !== 'ws' ) {
+        $('#early').prop('checked', false);
+    }
+    let path = setPath(defConfig.type === 'ws' ? defConfig.path : "");
     let early = $('#early').is(':checked');
-    if ( early ) {
+    if ( early && stream === 'ws' ) {
         path = path+'?ed=2048';
     }
     $('#uuid').val(getHashId(defConfig.id));
@@ -229,10 +243,25 @@ function setPath(string) {
     return string;
 }
 
+$(document).on('change', '#stream', function(e) {
+    let stream = $('#stream').val();
+    if ( stream !== 'ws' ) {
+        $('#grpcOnly').removeClass('none');
+        $('#path').prop('disabled', true).val('');
+        $('#early').prop('disabled', true);
+    }
+    else {
+        $('#grpcOnly').addClass('none');
+        $('#path').prop('disabled', false).val('');;
+        $('#early').prop('disabled', false);
+    }
+});
+
 $(document).on('click', '#early', function(e) {
     let early = $('#early').is(':checked');
     let path = setPath($('#path').val());
-    if ( early ) {
+    let stream = $('#stream').val();
+    if ( early && stream === 'ws' ) {
         path = path+'?ed=2048';
     }
     $('#path').val(path);
@@ -285,6 +314,7 @@ function cleanUrl(url) {
 function generateJson() {
     return new Promise((resolve, reject) => {
         let protocol = $('#protocol').val();
+        let stream = $('#stream').val();
         //let network = $('#network').val();
         let uuid = $('#uuid').val();
         let sni = cleanUrl($('#sni').val());
@@ -298,6 +328,8 @@ function generateJson() {
         let length = $('#length').val();
         let interval = $('#interval').val();
         //let early = $('#early').is(':checked');
+        let grpcMode = $('#grpcMode').val();
+        let serviceName = $('#serviceName').val();
         let cleanIp = $('#cleanIp').val();
         if ( cleanIp === '' ) {
             cleanIp = 'zula.ir';
@@ -307,23 +339,31 @@ function generateJson() {
             alert('فرم را تکمیل نمایید.');
             return false;
         }
-        fetch('fragment.json?v1.5')
+        fetch('fragment.json?v1.6')
             .then(response => response.json())
             .then(data => {
                 data.outbounds[0].protocol = protocol;
                 if ( mux ) {
                     data.outbounds[0].mux.enabled = true;
                     data.outbounds[0].mux.concurrency = Number(concurrency);
+                    data.outbounds[0].mux.xudpConcurrency = Number(concurrency);
                 }
                 else {
-                    data.outbounds[0].mux.enabled = false;
-                    data.outbounds[0].mux.concurrency = Number(-1);
+                    delete data.outbounds[0].mux;
                 }
-                data.outbounds[0].streamSettings.network = "ws";
+                data.outbounds[0].streamSettings.network = stream;
+                if ( stream === "grpc" ) {
+                    delete data.outbounds[0].streamSettings.wsSettings;
+                    data.outbounds[0].streamSettings.grpcSettings.multiMode = (grpcMode === 'multi' ? true : false);
+                    data.outbounds[0].streamSettings.grpcSettings.serviceName = serviceName;
+                }
+                else {
+                    delete data.outbounds[0].streamSettings.grpcSettings;
+                    data.outbounds[0].streamSettings.wsSettings.headers.Host = sni;
+                    data.outbounds[0].streamSettings.wsSettings.path = path;
+                }
                 data.outbounds[0].streamSettings.tlsSettings.allowInsecure = (insecure ? true : false);
                 data.outbounds[0].streamSettings.tlsSettings.serverName = sni;
-                data.outbounds[0].streamSettings.wsSettings.headers.Host = sni;
-                data.outbounds[0].streamSettings.wsSettings.path = path;
                 data.outbounds[0].settings.vnext[0].port = Number(port);
                 data.outbounds[0].settings.vnext[0].users[0].id = uuid;
                 data.outbounds[0].settings.vnext[0].address = cleanIp;
@@ -368,7 +408,7 @@ $(document).on('click', '#getFile', function(e) {
         })
         .catch(error => {
             // Handle errors here
-            console.error(error);
+            console.log(error)
         });
 });
 
@@ -383,6 +423,37 @@ $(document).on('click', '#copyCode', function (e) {
             input.setSelectionRange(0, 99999);
             document.execCommand('copy');
             alert('کد در کلیپ‌بورد کپی شد.');
+        })
+        .catch(error => {
+            console.error(error);
+        });
+});
+
+let vercelUrl = 'https://convertor-ircf.vercel.app/json/sub/';
+
+$(document).on('click', '#jsonUrl', function (e) {
+    e.preventDefault();
+    generateJson()
+        .then(data => {
+            data = JSON.stringify(data, null, 2);
+            window.open(vercelUrl+btoa(data));
+        })
+        .catch(error => {
+            console.error(error);
+        });
+});
+
+$(document).on('click', '#copyUrl', function (e) {
+    e.preventDefault();
+    generateJson()
+        .then(data => {
+            data = JSON.stringify(data, null, 2);
+            document.getElementById("jsonOutput").value = vercelUrl+btoa(data);
+            const input = document.getElementById('jsonOutput');
+            input.select();
+            input.setSelectionRange(0, 99999);
+            document.execCommand('copy');
+            alert('آدرس در کلیپ‌بورد کپی شد.');
         })
         .catch(error => {
             console.error(error);

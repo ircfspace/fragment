@@ -80,10 +80,14 @@
           "show": false
         },
         "wsSettings": {
-          "path": "###PATH###/?ed=2048",
+          "path": "###PATH###?ed=2048",
           "headers": {
             "Host": "###SNI###"
           }
+        },
+        "grpcSettings": {
+          "multiMode": false,
+          "serviceName": ""
         },
         "sockopt": {
           "dialerProxy": "fragment",
@@ -94,7 +98,9 @@
       },
       "mux": {
         "enabled": false,
-        "concurrency": -1
+        "concurrency": -1,
+        "xudpConcurrency": -1,
+        "xudpProxyUDP443": "reject"
       }
     },
     {

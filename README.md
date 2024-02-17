@@ -9,6 +9,8 @@
 ###  مناسب برای :
 * VLESS [Websocket]
 * VMESS [Websocket]
+* VLESS [GRPC]
+* VMESS [GRPC]
 ---
 
 ### لینکهای کاربردی در رابطه با فرگمنت :
