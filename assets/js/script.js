@@ -102,33 +102,49 @@ $(document).on('click', '#checkConf', function(e) {
     $('#defConfig').trigger('keyup')
 });
 
+function resetForm() {
+    $('#protocol option').removeAttr('selected');
+    $('#tls').prop('checked', true);
+    $('#early').prop('checked', false);
+    $('#uuid').val("");
+    $('#port').val("");
+    $('#sni').val("");
+    $('#cleanIp').val("");
+    $('#path').val("");
+    $('#concurrency').val("");
+    $('#packets').val('tlshello');
+    $('#length').val('10-20');
+    $('#interval').val('10-20');
+}
+
 $(document).on('keyup', '#defConfig', function(e) {
     e.preventDefault();
     let config = $(this).val().trim();
     if ( config === '' ) {
         //console.clear();
-        $('#protocol option').removeAttr('selected');
-        $('#tls').prop('checked', true);
-        $('#early').prop('checked', false);
-        $('#uuid').val("");
-        $('#port').val("");
-        $('#sni').val("");
-        $('#cleanIp').val("");
-        $('#path').val("");
-        $('#concurrency').val("");
-        $('#packets').val('tlshello');
-        $('#length').val('10-20');
-        $('#interval').val('10-20');
+        resetForm();
         return false;
     }
     let protocol = getProtocol(config);
+    if ( ! protocols.includes(protocol) ) {
+        alert('پروتکل باید Vless یا Vmess باشد!');
+        resetForm();
+        return false;
+    }
     $('#protocol option').removeAttr('selected');
     $('#protocol option[value="'+protocol+'"]').attr('selected', 'selected');
-    /*if ( ! protocols.includes(protocol) ) {
-        return false;
-    }*/
-    $('#port').val(getAddress(config)[1]);
     let defConfig = parser(protocol, config);
+    if ( protocol === 'vmess' && ["grpc", "reality", "tcp", "quic"].includes(defConfig.tls) ) {
+        alert('نوع کانفیگ باید وب‌سوکت باشد!');
+        resetForm();
+        return false;
+    }
+    if ( protocol === 'vless' && ["grpc", "reality", "tcp", "quic"].includes(defConfig.security) ) {
+        alert('نوع کانفیگ باید وب‌سوکت باشد!');
+        resetForm();
+        return false;
+    }
+    $('#port').val(getAddress(config)[1]);
     $('#sni').val(defConfig.host);
     if ( (protocol === 'vmess' && defConfig.tls === "tls") || (protocol === 'vless' && defConfig.security === "tls") ) {
         $('#tls').prop('checked', true);
