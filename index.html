@@ -4,10 +4,10 @@
         <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
         <link href="./assets/css/bootstrap-rtl.min.css" rel="stylesheet" />
         <link href="./assets/css/vazir.css" rel="stylesheet" />
-        <link href="./assets/css/style.css?v1.9" rel="stylesheet" />
-        <link href="./assets/css/lang.css?v1.9.1" rel="stylesheet" />
+        <link href="./assets/css/style.css?v1.10" rel="stylesheet" />
+        <link href="./assets/css/lang.css?v1.10" rel="stylesheet" />
         <title>IRCF | ابزار فرگمنت</title>
-        <meta name="description" content="آی پی سالم و تمیز برای کلودفلر (کلادفلر) جهت دسترسی به اینترنت آزاد" />
+        <meta name="description" content="توسط ابزار فرگمنت می‌تونین دامنه‌های مرده‌تون رو مجدد زنده کنید!" />
         <meta name="keywords" content="کلودفلر, کلادفلر, cloudflare, cf, آی پی تمیز, آی پی سالم, اسکن آی پی" />
         <meta name="robots" content="index,follow,noodp" />
         <meta name="googlebot" content="index,follow" />
@@ -155,7 +155,6 @@
                     <input class="form-control dirLeft" data-i18n-label="config_mux_concurrency" id="concurrency" value="8" data-toggle="tooltip" data-i18n-title="config_mux_concurrency_tooltip" />
                 </div>
                 <div class="clearfix"></div>
-                <div class="qrcode" id="qrcode"></div>
                 <div class="input-group fetchIps">
                     <button class="btn btn-info" type="submit" id="getFile" data-i18n="config_form_submit"></button>
                     <div class="input-group-btn">
@@ -165,9 +164,9 @@
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" role="menu">
+                                    <li class="hidden"><a href="javascript:;" id="jsonUrl" data-i18n="config_form_jsonurl"></a></li>
+                                    <li><a href="javascript:;" id="qrGen" data-i18n="config_form_qrcode"></a></li>
                                     <li><a href="javascript:;" id="copyCode" data-i18n="config_form_copy"></a></li>
-                                    <li><a href="javascript:;" id="jsonUrl" data-i18n="config_form_jsonurl"></a></li>
-                                    <li><a href="javascript:;" id="copyUrl" data-i18n="config_form_copyurl"></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -221,6 +220,25 @@
                         </div>
                     </div>
                 </div>
+                <div id="qrModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close pull-right" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title dirLeft">QRCode</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="qrcode" id="qrcode">
+                                    <img src="" alt="qrcode" />
+                                    <input class="form-control dirLeft" value="" />
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" id="copyUrl" data-i18n="config_form_copyurl"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <footer>
                     <p class="text-center">
                         © توسط
@@ -234,7 +252,7 @@
                     <script src="./assets/js/jquery.min.js"></script>
                     <script src="./assets/js/bootstrap.min.js"></script>
                     <script src="./assets/js/lang.js?v1.3.2"></script>
-                    <script src="./assets/js/script.js?v1.9.2"></script>
+                    <script src="./assets/js/script.js?v1.10.2"></script>
                 </footer>
             </div>
         </div>
