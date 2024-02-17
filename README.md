@@ -8,8 +8,8 @@
 
 ###  مناسب برای :
 * VLESS [Websocket]
-* VMESS [Websocket]
 * VLESS [GRPC]
+* VMESS [Websocket]
 * VMESS [GRPC]
 * TROJAN [Websocket]
 * TROJAN [GRPC]
