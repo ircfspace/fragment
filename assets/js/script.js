@@ -127,14 +127,17 @@ $(document).on('keyup', '#defConfig', function(e) {
     /*if ( ! protocols.includes(protocol) ) {
         return false;
     }*/
-    $('#uuid').val(getHashId(config));
     $('#port').val(getAddress(config)[1]);
     let defConfig = parser(protocol, config);
+    $('#sni').val(defConfig.host);
     if ( (protocol === 'vmess' && defConfig.tls === "tls") || (protocol === 'vless' && defConfig.security === "tls") ) {
         $('#tls').prop('checked', true);
         $('#packets').val('tlshello');
         $('#length').val('10-20');
         $('#interval').val('10-20');
+        if ( typeof defConfig.host === "undefined" || typeof defConfig.host !== "undefined" && defConfig.host === "") {
+            $('#sni').val(defConfig.sni);
+        }
     }
     else {
         $('#tls').prop('checked', false);
@@ -142,7 +145,6 @@ $(document).on('keyup', '#defConfig', function(e) {
         $('#length').val('3-5');
         $('#interval').val('5');
     }
-    $('#sni').val(defConfig.host);
     if ( protocol === 'vmess' ) {
         $('#cleanIp').val(defConfig.add);
     }
@@ -161,6 +163,7 @@ $(document).on('keyup', '#defConfig', function(e) {
     else {
         path = path.replace('/?ed=2048', '')
     }
+    $('#uuid').val(getHashId(defConfig.id));
     $('#path').val(path);
 });
 
@@ -183,11 +186,13 @@ $(document).on('click', '#tls', function(e) {
         $('#packets').val('tlshello');
         $('#length').val('10-20');
         $('#interval').val('10-20');
+        $('#sni').attr('placeholder', 'SNI');
     }
     else {
         $('#packets').val('1-1');
         $('#length').val('3-5');
         $('#interval').val('5');
+        $('#sni').attr('placeholder', 'Host');
     }
 });
 
@@ -267,7 +272,6 @@ $(document).on('click', '#getFile', function(e) {
             data.outbounds[0].settings.vnext[0].port = Number(port);
             data.outbounds[0].settings.vnext[0].users[0].id = uuid;
             data.outbounds[0].settings.vnext[0].address = cleanIp;
-
             if ( tls ) {
                 data.outbounds[1].settings.fragment.packets = 'tlshello';
                 data.outbounds[1].settings.fragment.length = '10-20';
