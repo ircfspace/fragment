@@ -4,7 +4,7 @@
         <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
         <link href="./assets/css/bootstrap-rtl.min.css" rel="stylesheet" />
         <link href="./assets/css/vazir.css" rel="stylesheet" />
-        <link href="./assets/css/style.css?v1.1" rel="stylesheet" />
+        <link href="./assets/css/style.css?v1.5" rel="stylesheet" />
         <title>IRCF | ابزار فرگمنت</title>
         <meta name="description" content="آی پی سالم و تمیز برای کلودفلر (کلادفلر) جهت دسترسی به اینترنت آزاد" />
         <meta name="keywords" content="کلودفلر, کلادفلر, cloudflare, cf, آی پی تمیز, آی پی سالم, اسکن آی پی" />
@@ -56,32 +56,49 @@
                 <div class="alert alert-info" id="defAlert">
                     <p>توسط ابزار فرگمنت می‌تونین دامنه‌های مرده‌تون رو مجدد زنده کنید!</p>
                 </div>
-                <div class="minWidth">
+                <p>یک کانفیگ VLESS/VMESS از نوع webSocket وارد کنین:</p>
+                <input class="form-control dirLeft" placeholder="Your Config" value="" id="defConfig" />
+                <div class="orClass"><small>یا</small></div>
+                <p>یا تنظیمات زیر رو به‌صورت دستی تکمیل کنین:</p>
+                <div class="xsWidth withSmallCenter">
                     <select class="form-control dirLeft" id="protocol">
-                        <option value="vless">VLESS</option>
-                        <option value="vmess">VMESS</option>
+                        <option value="vless">VLESS (WS)</option>
+                        <option value="vmess">VMESS (WS)</option>
                     </select>
-                    <select class="form-control dirLeft" id="network">
-                        <option value="ws">WS</option>
-                    </select>
-                </div>
-                <input class="form-control dirLeft" placeholder="UUID" id="uuid" />
-                <div class="minWidth">
-                    <input class="form-control dirLeft" placeholder="SNI" id="sni" />
+                    <input class="form-control dirLeft" placeholder="UUID" id="uuid" />
                     <input class="form-control dirLeft" placeholder="PORT" id="port" type="number" />
                 </div>
                 <div class="xsWidth">
-                    <select class="form-control dirLeft" id="tls">
-                        <option value="tls">TLS</option>
-                        <option value="none">No TLS</option>
-                    </select>
+                    <input class="form-control dirLeft" placeholder="CleanIP (default: zula.ir)" id="cleanIp" />
+                    <input class="form-control dirLeft" placeholder="Host" id="sni" />
                     <input class="form-control dirLeft" placeholder="PATH" id="path" />
-                    <select class="form-control dirLeft" id="early">
-                        <option value="on">Early Data</option>
-                        <option value="off">Off</option>
-                    </select>
                 </div>
-                <input class="form-control dirLeft" placeholder="CleanIP (default: zula.ir)" id="cleanIp" />
+                <div class="orClass"><small>تنظیمات فرگمنت</small></div>
+                <div class="xsWidth">
+                    <input class="form-control dirLeft" placeholder="Packets" id="packets" value="tlshello" />
+                    <input class="form-control dirLeft" placeholder="Length" id="length" value="10-20" />
+                    <input class="form-control dirLeft" placeholder="Interval" id="interval" value="10-20" />
+                </div>
+                <div class="clearfix"></div>
+                <label class="switch">
+                    <input type="checkbox" id="tls" checked />
+                    <span class="slider round"></span>
+                    <strong>TLS</strong>
+                </label>
+                <label class="switch">
+                    <input type="checkbox" id="early" checked />
+                    <span class="slider round"></span>
+                    <strong>Early Data</strong>
+                </label>
+                <label class="switch">
+                    <input type="checkbox" id="mux" />
+                    <span class="slider round"></span>
+                    <strong>Mux</strong>
+                </label>
+                <div class="muxForm none" id="muxForm">
+                    <div class="orClass"><small>مقدار Concurrency</small></div>
+                    <input class="form-control dirLeft" placeholder="Concurrency" id="concurrency" value="8" />
+                </div>
                 <div class="input-group fetchIps">
                     <button class="btn btn-default" type="submit" id="getFile">
                         ایجاد فایل JSON
@@ -166,7 +183,7 @@
                     </div>-->
                     <script src="./assets/js/jquery.min.js"></script>
                     <script src="./assets/js/bootstrap.min.js"></script>
-                    <script src="./assets/js/script.js?v1.1"></script>
+                    <script src="./assets/js/script.js?v1.5"></script>
                 </footer>
             </div>
         </div>

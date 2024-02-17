@@ -285,7 +285,7 @@ img[alt="loader"] {
 }
 .xsWidth input,
 .xsWidth select {
-	width: 33%;
+	width: 33.33%;
 	float: left;
 	border-radius: 0;
 }
@@ -298,6 +298,77 @@ img[alt="loader"] {
 .xsWidth input:last-child {
 	border-left: transparent;
 	border-radius: 0 3px 3px 0;
+}
+.xsWidth.withSmallCenter select:first-child,
+.xsWidth.withSmallCenter input:first-child {
+	width: 150px;
+}
+.xsWidth.withSmallCenter select:nth-child(2),
+.xsWidth.withSmallCenter input:nth-child(2) {
+	width: calc(100% - 250px);
+}
+.xsWidth.withSmallCenter select:last-child,
+.xsWidth.withSmallCenter input:last-child {
+	width: 100px;
+}
+
+p {
+	font-size: 14px;
+}
+.orClass {
+	float: right;
+	width: 100%;
+	position: relative;
+	border-bottom: 1px solid #ededed;
+	margin: 20px 0;
+}
+.orClass small {
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	margin-bottom: -9px;
+	text-shadow: 0 0 7px #fff;
+}
+
+.switch {
+	position: relative;
+	display: inline-block;
+	height: 26px;
+	float: left;
+	margin: 0 7px 10px 0;
+}
+.switch input {
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+.slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #fff;
+	border: 1px solid #aecede;
+	-webkit-transition: .4s;
+	transition: .4s;
+	border-radius: 25px;
+	cursor: pointer;
+}
+input:checked + .slider {
+	background-color: #d3e5ed;
+}
+.switch strong {
+	float: right;
+	margin: 3px 15px 0 15px;
+	position: relative;
+	z-index: 1;
+	font-weight: 400;
+	font-size: 13px;
+	cursor: pointer;
 }
 
 footer {
