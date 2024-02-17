@@ -393,6 +393,10 @@ input:checked + .slider {
 	margin: 0;
 }
 
+.tooltip .tooltip-inner {
+	font: 11px vazir;
+}
+
 footer {
 	padding: 10px 0;
 	/*position: fixed;
