@@ -419,7 +419,7 @@ function generateJson() {
                     '&uuid*IRCF*'+uuid+
                     '&sni*IRCF*'+sni+
                     '&port*IRCF*'+port+
-                    '&path*IRCF*'+path+
+                    '&path*IRCF*'+path?.replace('/?ed=2048', '/abcdz=2048')+
                     '&tls*IRCF*'+tls+
                     '&insecure*IRCF*'+insecure+
                     '&mux*IRCF*'+mux+
