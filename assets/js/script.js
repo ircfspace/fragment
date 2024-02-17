@@ -287,11 +287,12 @@ function generateJson() {
         if ( cleanIp === '' ) {
             cleanIp = 'zula.ir';
         }
+        let direct = $('#direct').is(':checked');
         if ( uuid === '' || sni === ''|| port === '' ) {
             alert('فرم را تکمیل نمایید.');
             return false;
         }
-        fetch('fragment.json?v1.1')
+        fetch('fragment.json?v1.3')
             .then(response => response.json())
             .then(data => {
                 data.outbounds[0].protocol = protocol;
@@ -320,6 +321,11 @@ function generateJson() {
                 else {
                     delete data.outbounds[0].streamSettings.tlsSettings;
                     delete data.outbounds[0].streamSettings.security;
+                }
+                if ( ! direct ) {
+                    /*delete data.routing.rules[1];
+                    delete data.routing.rules[2];*/
+                    data.routing.rules = data.routing.rules.filter((rule, index) => index !== 1 && index !== 2);
                 }
                 resolve(data);
             })

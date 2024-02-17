@@ -88,7 +88,8 @@
         "sockopt": {
           "dialerProxy": "fragment",
           "tcpKeepAliveIdle": 100,
-          "mark": 255
+          "mark": 255,
+          "tcpNoDelay": true
         }
       },
       "mux": {
@@ -100,6 +101,7 @@
       "tag": "fragment",
       "protocol": "freedom",
       "settings": {
+        "domainStrategy": "AsIs",
         "fragment": {
           "packets": "tlshello",
           "length": "10-20",
@@ -108,9 +110,8 @@
       },
       "streamSettings": {
         "sockopt": {
-          "TcpNoDelay": true,
-          "tcpKeepAliveIdle": 100,
-          "mark": 255
+          "tcpNoDelay": true,
+          "tcpKeepAliveIdle": 100
         }
       }
     },
