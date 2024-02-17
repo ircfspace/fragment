@@ -145,7 +145,12 @@ $(document).on('keyup', '#defConfig', function(e) {
         return false;
     }
     $('#stream option').removeAttr('selected');
-    $('#stream option[value="'+ (defConfig.type === 'ws' ? 'ws' : 'grpc') +'"]').attr('selected', 'selected').prop('selected', true).trigger('change');
+    if ( protocol === 'vless' ) {
+        $('#stream option[value="'+ (defConfig.type === 'ws' ? 'ws' : 'grpc') +'"]').attr('selected', 'selected').prop('selected', true).trigger('change');
+    }
+    else {
+        $('#stream option[value="'+ (defConfig.net === 'ws' ? 'ws' : 'grpc') +'"]').attr('selected', 'selected').prop('selected', true).trigger('change');
+    }
     let port = String(getAddress(config)[1]).replace('/', '');
     $('#port').val(port);
     $('#sni').val(defConfig.host);
