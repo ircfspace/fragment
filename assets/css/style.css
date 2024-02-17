@@ -65,22 +65,18 @@ ul li {
 	float: right !important;
 	width: 100%;
 }
-.input-group input {
-	width: 45% !important;
-	float: right;
-	margin: 0;
-}
-.input-group select {
-	width: 30% !important;
-	float: right;
+.input-group input.form-control {
+	width: calc(100% - 100px) !important;
+	float: left;
 	margin: 0;
 }
 .input-group .input-group-btn {
-	width: 25% !important;
-	float: left;
+	width: 100px !important;
+	float: right;
 }
 .input-group .input-group-btn button {
 	width: 100% !important;
+	border-left: 0;
 }
 
 .dirLeft {
