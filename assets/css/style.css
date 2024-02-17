@@ -413,6 +413,18 @@ input:checked + .slider {
 	margin: 0px 0 -7px 0;
 	font-size: 30px;
 }
+.modal-footer button {
+	float: right;
+	width: 50%;
+	margin-right: 0!important;
+	margin-bottom: 5px!important;
+}
+.modal-footer button:nth-child(odd) {
+	margin-left: 5px!important;
+}
+.modal-footer button:nth-child(even) {
+	width: calc(50% - 5px)
+}
 
 .tooltip .tooltip-inner {
 	font: 11px vazir;

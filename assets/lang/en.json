@@ -18,6 +18,7 @@
 	"config_form_copyurl": "Copy URL",
 	"config_form_jsonurl": "View code",
 	"config_form_qrcode": "QR CODE",
+	"config_form_convert": "Convert to Fragment",
 	"config_switch_tls": "TLS",
 	"config_switch_tls_tooltip": "the ability to switch between TLS Fragment and TCP Segment",
 	"config_switch_insecure": "Insecure",
