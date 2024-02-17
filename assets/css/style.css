@@ -254,6 +254,18 @@ img[alt="loader"] {
 	float: right;
 	width: 100% !important;
 }
+.fetchIps button {
+	width: 50%;
+}
+.fetchIps button:first-child {
+	width: calc(100% - 100px);
+	border-radius: 0 5px 5px 0;
+}
+.fetchIps button:last-child {
+	width: 100px;
+	border-radius: 5px 0 0 5px;
+	border-right: transparent;
+}
 
 .minWidth {
 	float: right;

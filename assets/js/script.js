@@ -1,5 +1,4 @@
 const protocols = ["vless", "vmess"];
-const ports = ["443", "2053", "2083", "2087", "2096", "8443"];
 
 function parser(protocol, config) {
     if ( protocol === 'vmess' ) {
@@ -99,7 +98,7 @@ function base64Decode(config) {
 }
 
 $(document).on('click', '#checkConf', function(e) {
-    $('#defConfig').trigger('keyup')
+    $('#defConfig').trigger('keyup');
 });
 
 function resetForm() {
@@ -247,74 +246,101 @@ function cleanUrl(url) {
     return randomizeCase(finalUrl);
 }
 
+function generateJson() {
+    return new Promise((resolve, reject) => {
+        let protocol = $('#protocol').val();
+        //let network = $('#network').val();
+        let uuid = $('#uuid').val();
+        let sni = cleanUrl($('#sni').val());
+        let port = $('#port').val();
+        let path = setPath($('#path').val());
+        let tls = $('#tls').is(':checked');
+        let mux = $('#mux').is(':checked');
+        let concurrency = $('#concurrency').val();
+        let packets = $('#packets').val();
+        let length = $('#length').val();
+        let interval = $('#interval').val();
+        //let early = $('#early').is(':checked');
+        let cleanIp = $('#cleanIp').val();
+        if ( cleanIp === '' ) {
+            cleanIp = 'zula.ir';
+        }
+        if ( uuid === '' || sni === ''|| port === '' ) {
+            alert('فرم را تکمیل نمایید.');
+            return false;
+        }
+        fetch('fragment.json?v1.1')
+            .then(response => response.json())
+            .then(data => {
+                data.outbounds[0].protocol = protocol;
+                if ( mux ) {
+                    data.outbounds[0].mux.enabled = true;
+                    data.outbounds[0].mux.concurrency = Number(concurrency);
+                }
+                else {
+                    data.outbounds[0].mux.enabled = false;
+                    data.outbounds[0].mux.concurrency = Number(-1);
+                }
+                data.outbounds[0].streamSettings.network = "ws";
+                data.outbounds[0].streamSettings.tlsSettings.serverName = sni;
+                data.outbounds[0].streamSettings.wsSettings.headers.Host = sni;
+                data.outbounds[0].streamSettings.wsSettings.path = path;
+                data.outbounds[0].settings.vnext[0].port = Number(port);
+                data.outbounds[0].settings.vnext[0].users[0].id = uuid;
+                data.outbounds[0].settings.vnext[0].address = cleanIp;
+                data.outbounds[1].settings.fragment.packets = packets;
+                data.outbounds[1].settings.fragment.length = length;
+                data.outbounds[1].settings.fragment.interval = interval;
+                if ( tls ) {
+                    data.outbounds[0].streamSettings.security = "tls";
+                }
+                else {
+                    delete data.outbounds[0].streamSettings.tlsSettings;
+                    delete data.outbounds[0].streamSettings.security;
+                }
+                resolve(data);
+            })
+            .catch(error => {
+                reject(error);
+            });
+    });
+}
+
 $(document).on('click', '#getFile', function(e) {
     e.preventDefault();
-    let protocol = $('#protocol').val();
-    //let network = $('#network').val();
-    let uuid = $('#uuid').val();
-    let sni = cleanUrl($('#sni').val());
-    let port = $('#port').val();
-    let path = setPath($('#path').val());
-    let tls = $('#tls').is(':checked');
-    let mux = $('#mux').is(':checked');
-    let concurrency = $('#concurrency').val();
-    let packets = $('#packets').val();
-    let length = $('#length').val();
-    let interval = $('#interval').val();
-    //let early = $('#early').is(':checked');
-    let cleanIp = $('#cleanIp').val();
-    if ( cleanIp === '' ) {
-        cleanIp = 'zula.ir';
-    }
-    if ( uuid === '' || sni === ''|| port === '' ) {
-        alert('فرم را تکمیل نمایید.');
-        return;
-    }
-    fetch('fragment.json?v1.0')
-        .then(response => response.json())
+    generateJson()
         .then(data => {
-            data.outbounds[0].protocol = protocol;
-            if ( mux ) {
-                data.outbounds[0].mux.enabled = true;
-                data.outbounds[0].mux.concurrency = Number(concurrency);
-            }
-            else {
-                data.outbounds[0].mux.enabled = false;
-                data.outbounds[0].mux.concurrency = Number(-1);
-            }
-            data.outbounds[0].streamSettings.network = "ws";
-            data.outbounds[0].streamSettings.tlsSettings.serverName = sni;
-            data.outbounds[0].streamSettings.wsSettings.headers.Host = sni;
-            data.outbounds[0].streamSettings.wsSettings.path = path;
-            data.outbounds[0].settings.vnext[0].port = Number(port);
-            data.outbounds[0].settings.vnext[0].users[0].id = uuid;
-            data.outbounds[0].settings.vnext[0].address = cleanIp;
-            data.outbounds[1].settings.fragment.packets = packets;
-            data.outbounds[1].settings.fragment.length = length;
-            data.outbounds[1].settings.fragment.interval = interval;
-            if ( tls ) {
-                data.outbounds[0].streamSettings.security = "tls";
-            }
-            else {
-                delete data.outbounds[0].streamSettings.tlsSettings;
-                delete data.outbounds[0].streamSettings.security;
-            }
-            //console.log(data)
-            downloadJsonFile(data, 'fragment [ircf.space].json');
+            const jsonData = JSON.stringify(data, null, 2);
+            const blob = new Blob([jsonData], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'fragment [ircf.space].json';
+            a.style.display = 'none';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
         })
-        .catch(error => console.error('Error fetching the JSON file:', error));
+        .catch(error => {
+            // Handle errors here
+            console.error(error);
+        });
 });
 
-function downloadJsonFile(data, filename) {
-    const jsonData = JSON.stringify(data, null, 2);
-    const blob = new Blob([jsonData], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = filename || 'data.json';
-    a.style.display = 'none';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-}
+$(document).on('click', '#copyCode', function(e) {
+    e.preventDefault();
+    generateJson()
+        .then(data => {
+            data = JSON.stringify(data, null, 2)
+            navigator.clipboard.writeText(data).then(() => {
+                alert('کد در کلیپ‌بورد کپی شد.');
+            }).catch(() => {
+                //alert('مشکلی پیش آمده است!');
+            });
+        })
+        .catch(error => {
+            // Handle errors here
+            console.error(error);
+        });
+});
