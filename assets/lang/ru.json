@@ -36,5 +36,7 @@
 	"config_fragment_length": "Длина",
 	"config_fragment_interval": "Интервал",
 	"config_app_name_label": "Совместимость",
-	"config_app_name_all": "Все приложения"
+	"config_app_name_all": "Все приложения",
+	"config_app_name_nekoray_tooltip": "Чтобы использовать фрагмент в Nekoray, вам нужно переключить ядро из настроек этого приложения на XRAY",
+	"config_app_name_napsternetV_tooltip": "При выборе NapsternetV опция правил маршрутизации будет отключена"
 }
