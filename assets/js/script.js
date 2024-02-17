@@ -264,7 +264,7 @@ $(document).on('change', '#stream', function(e) {
     }
     else {
         $('#grpcOnly').addClass('none');
-        $('#path').prop('disabled', false).val('');;
+        $('#path').prop('disabled', false).val('');
         $('#early').prop('disabled', false);
     }
 });
