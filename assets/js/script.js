@@ -98,7 +98,7 @@ function base64Decode(config) {
     }
 }
 
-$(document).on('keyup', '#defConfig', function(e) {
+$(document).on('keyup change', '#defConfig', function(e) {
     e.preventDefault();
     let config = $(this).val().trim();
     if ( config === '' ) {
