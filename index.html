@@ -4,7 +4,7 @@
         <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
         <link href="./assets/css/bootstrap-rtl.min.css" rel="stylesheet" />
         <link href="./assets/css/vazir.css" rel="stylesheet" />
-        <link href="./assets/css/style.css?v1.6" rel="stylesheet" />
+        <link href="./assets/css/style.css?v1.7" rel="stylesheet" />
         <title>IRCF | ابزار فرگمنت</title>
         <meta name="description" content="آی پی سالم و تمیز برای کلودفلر (کلادفلر) جهت دسترسی به اینترنت آزاد" />
         <meta name="keywords" content="کلودفلر, کلادفلر, cloudflare, cf, آی پی تمیز, آی پی سالم, اسکن آی پی" />
@@ -85,6 +85,11 @@
                     <strong>TLS</strong>
                 </label>
                 <label class="switch">
+                    <input type="checkbox" id="insecure" checked />
+                    <span class="slider round"></span>
+                    <strong id="secureLabel" title="Allow Insecure">Insecure</strong>
+                </label>
+                <label class="switch">
                     <input type="checkbox" id="early" />
                     <span class="slider round"></span>
                     <strong>Early Data</strong>
@@ -96,9 +101,9 @@
                 </label>
                 <div class="orClass"><small>مقادیر فرگمنت</small></div>
                 <div class="xsWidth">
-                    <input class="form-control dirLeft" placeholder="Packets" id="packets" value="tlshello" />
-                    <input class="form-control dirLeft" placeholder="Length" id="length" value="10-20" />
-                    <input class="form-control dirLeft" placeholder="Interval" id="interval" value="10-20" />
+                    <input class="form-control dirLeft" placeholder="Packets" title="Packets" id="packets" value="tlshello" />
+                    <input class="form-control dirLeft" placeholder="Length" title="Length" id="length" value="10-20" />
+                    <input class="form-control dirLeft" placeholder="Interval" title="Interval" id="interval" value="10-20" />
                 </div>
                 <div class="muxForm none" id="muxForm">
                     <div class="orClass"><small>مقدار Concurrency</small></div>
@@ -191,7 +196,7 @@
                     </div>-->
                     <script src="./assets/js/jquery.min.js"></script>
                     <script src="./assets/js/bootstrap.min.js"></script>
-                    <script src="./assets/js/script.js?v1.6"></script>
+                    <script src="./assets/js/script.js?v1.7"></script>
                 </footer>
             </div>
         </div>
