@@ -304,7 +304,13 @@ $(document).on('click', '#getFile', function(e) {
                 url: 'http://pastes.io/api/paste/create',
                 type: 'POST',
                 dataType: 'json',
-                data: data,
+                data: {
+                    content: data,
+                    status: '1',
+                    expire: 'N',
+                    title: 'fragment',
+                    syntax: 'none',
+                },
                 headers: {
                     'Accept': 'application/json',
                     'Authorization': 'Bearer 797a51c84a75ea799ad02b0977e31a3147d2325573add6440845d33387944cfb'
