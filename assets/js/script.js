@@ -375,5 +375,8 @@ $(document).on('click', '#copyCode', function (e) {
 });
 
 window.addEventListener('load', function() {
-    $('[data-toggle="tooltip"]').tooltip()
+    $('[data-toggle="tooltip"]').tooltip({
+        placement: "top",
+        trigger: "hover",
+    })
 });
