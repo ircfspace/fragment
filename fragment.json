@@ -64,6 +64,17 @@
               }
             ]
           }
+        ],
+        "servers": [
+          {
+            "address": "###CLEANIP###",
+            "level": 1,
+            "flow": "",
+            "method": "chacha20-poly1305",
+            "ota": false,
+            "password": "###UUID###",
+            "port": "###PORT###"
+          }
         ]
       },
       "streamSettings": {

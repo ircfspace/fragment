@@ -1,6 +1,6 @@
 {
 	"welcome_message": "توسط ابزار فرگمنت می‌تونین دامنه‌های مرده‌تون رو مجدد زنده کنید!",
-	"config_input": "یک کانفیگ VLESS/VMESS از نوع WS/GRPC وارد کنین:",
+	"config_input": "یک کانفیگ VLESS/VMESS/TROJAN از نوع WS/GRPC وارد کنین:",
 	"config_input_label": "Your Config",
 	"config_input_submit": "بررسی",
 	"config_form_ortext": "یا",

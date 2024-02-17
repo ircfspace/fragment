@@ -1,6 +1,6 @@
 {
 	"welcome_message": "使用片段工具，您可以恢复您的失效域名！",
-	"config_input": "提供一个使用WS/GRPC类型的VLESS/VMESS配置:",
+	"config_input": "提供一个使用WS/GRPC类型的VLESS/VMESS/TROJAN配置:",
 	"config_input_label": "您的配置",
 	"config_input_submit": "检查",
 	"config_form_ortext": "或",

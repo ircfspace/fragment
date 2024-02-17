@@ -1,6 +1,6 @@
 {
 	"welcome_message": "С помощью инструмента Fragment вы можете оживить свои мертвые домены!",
-	"config_input": "Укажите конфигурацию VLESS/VMESS с типом WS/GRPC:",
+	"config_input": "Укажите конфигурацию VLESS/VMESS/TROJAN с типом WS/GRPC:",
 	"config_input_label": "Ваша конфигурация",
 	"config_input_submit": "Проверить",
 	"config_form_ortext": "ИЛИ",

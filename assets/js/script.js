@@ -1,4 +1,4 @@
-const protocols = ["vless", "vmess"];
+const protocols = ["vless", "vmess", 'trojan'];
 
 function parser(protocol, config) {
     if ( protocol === 'vmess' ) {
@@ -7,7 +7,7 @@ function parser(protocol, config) {
             'protocol': protocol,
         }, (config));
     }
-    else if ( protocol === 'vless' ) {
+    else if ( protocol === 'vless' || protocol === 'trojan' ) {
         config = Object.assign({
             'protocol': protocol,
             'id': getHashId(config),
@@ -126,14 +126,14 @@ $(document).on('keyup', '#defConfig', function(e) {
     }
     let protocol = getProtocol(config);
     if ( ! protocols.includes(protocol) ) {
-        alert('پروتکل باید Vless یا Vmess باشد!');
+        alert('پروتکل باید VLESS/VMESS/TROJAN باشد!');
         resetForm();
         return false;
     }
     $('#protocol option').removeAttr('selected');
     $('#protocol option[value="'+protocol+'"]').attr('selected', 'selected').prop('selected', true);
     let defConfig = parser(protocol, config);
-    //console.log(defConfig)
+    console.log(defConfig)
     if ( protocol === 'vmess' && ["reality", "tcp"].includes(defConfig.tls) ) {
         alert('نوع کانفیگ باید WS/GRPC باشد!');
         resetForm();
@@ -145,16 +145,16 @@ $(document).on('keyup', '#defConfig', function(e) {
         return false;
     }
     $('#stream option').removeAttr('selected');
-    if ( protocol === 'vless' ) {
-        $('#stream option[value="'+ (defConfig.type === 'ws' ? 'ws' : 'grpc') +'"]').attr('selected', 'selected').prop('selected', true).trigger('change');
+    if ( protocol === 'vmess' ) {
+        $('#stream option[value="'+ (defConfig.net === 'ws' ? 'ws' : 'grpc') +'"]').attr('selected', 'selected').prop('selected', true).trigger('change');
     }
     else {
-        $('#stream option[value="'+ (defConfig.net === 'ws' ? 'ws' : 'grpc') +'"]').attr('selected', 'selected').prop('selected', true).trigger('change');
+        $('#stream option[value="'+ (defConfig.type === 'ws' ? 'ws' : 'grpc') +'"]').attr('selected', 'selected').prop('selected', true).trigger('change');
     }
     let port = String(getAddress(config)[1]).replace('/', '');
     $('#port').val(port);
     $('#sni').val(defConfig.host);
-    if ( (protocol === 'vmess' && defConfig.tls === "tls") || (protocol === 'vless' && defConfig.security === "tls") ) {
+    if ( (protocol === 'vmess' && defConfig.tls === "tls") || (protocol === 'vless' && defConfig.security === "tls") || (protocol === 'trojan' && defConfig.security === "tls") ) {
         $('#tls').prop('checked', true);
         $('#packets').val('tlshello');
         $('#length').val('10-20');
@@ -378,12 +378,21 @@ function generateJson() {
                 }
                 data.outbounds[0].streamSettings.tlsSettings.allowInsecure = (insecure ? true : false);
                 data.outbounds[0].streamSettings.tlsSettings.serverName = sni;
-                data.outbounds[0].settings.vnext[0].port = Number(port);
-                data.outbounds[0].settings.vnext[0].users[0].id = uuid;
-                data.outbounds[0].settings.vnext[0].address = cleanIp;
                 data.outbounds[1].settings.fragment.packets = packets;
                 data.outbounds[1].settings.fragment.length = length;
                 data.outbounds[1].settings.fragment.interval = interval;
+                if ( protocol === 'trojan' ) {
+                    data.outbounds[0].settings.servers[0].port = Number(port);
+                    data.outbounds[0].settings.servers[0].password = uuid;
+                    data.outbounds[0].settings.servers[0].address = cleanIp;
+                    delete data.outbounds[0].settings.vnext;
+                }
+                else {
+                    data.outbounds[0].settings.vnext[0].port = Number(port);
+                    data.outbounds[0].settings.vnext[0].users[0].id = uuid;
+                    data.outbounds[0].settings.vnext[0].address = cleanIp;
+                    delete data.outbounds[0].settings.servers;
+                }
                 if ( tls ) {
                     data.outbounds[0].streamSettings.security = "tls";
                 }
