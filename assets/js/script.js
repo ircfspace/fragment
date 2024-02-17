@@ -363,16 +363,15 @@ $(document).on('click', '#copyCode', function(e) {
         .then(data => {
             data = JSON.stringify(data, null, 2);
             const textarea = document.createElement('textarea');
-            textarea.value = data;
-            textarea.setAttribute('readonly', '');
+            textarea.textContent = data;
             textarea.style.position = 'absolute';
-            textarea.style.left = '-9999px';
+            textarea.style.left = '-100px';
             textarea.style.width = '1px';
             textarea.style.height = '1px';
-            document.body.appendChild(textarea);
+            document.body.append(textarea);
             textarea.select();
             document.execCommand('copy');
-            document.body.removeChild(textarea);
+            textarea.remove();
             alert('کد در کلیپ‌بورد کپی شد.');
         })
         .catch(error => {
