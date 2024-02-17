@@ -145,11 +145,14 @@ $(document).on('keyup', '#defConfig', function(e) {
     else {
         $('#cleanIp').val(defConfig.address);
     }
-    let early = $('#early').is(':checked');
     let path = defConfig.path;
+    let early = $('#early').is(':checked');
     if ( early ) {
         path = path+'/?ed=2048';
         path = path.replace('//', '/');
+    }
+    else {
+        path = path.replace('/?ed=2048', '')
     }
     $('#path').val(path);
 });
