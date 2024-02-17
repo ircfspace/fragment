@@ -343,7 +343,6 @@ function generateJson() {
         fetch('fragment.json?v1.6')
             .then(response => response.json())
             .then(data => {
-                let socksPort, httpPort;
                 if (appName === 'nekoray') {
                     data.inbounds[0].port = 2080;
                     data.inbounds[1].port = 2081;
