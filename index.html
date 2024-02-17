@@ -73,12 +73,6 @@
                     <input class="form-control dirLeft" placeholder="Host" id="sni" />
                     <input class="form-control dirLeft" placeholder="PATH" id="path" />
                 </div>
-                <div class="orClass"><small>تنظیمات فرگمنت</small></div>
-                <div class="xsWidth">
-                    <input class="form-control dirLeft" placeholder="Packets" id="packets" value="tlshello" />
-                    <input class="form-control dirLeft" placeholder="Length" id="length" value="10-20" />
-                    <input class="form-control dirLeft" placeholder="Interval" id="interval" value="10-20" />
-                </div>
                 <div class="clearfix"></div>
                 <label class="switch">
                     <input type="checkbox" id="tls" checked />
@@ -86,7 +80,7 @@
                     <strong>TLS</strong>
                 </label>
                 <label class="switch">
-                    <input type="checkbox" id="early" checked />
+                    <input type="checkbox" id="early" />
                     <span class="slider round"></span>
                     <strong>Early Data</strong>
                 </label>
@@ -95,12 +89,18 @@
                     <span class="slider round"></span>
                     <strong>Mux</strong>
                 </label>
+                <div class="orClass"><small>تنظیمات فرگمنت</small></div>
+                <div class="xsWidth">
+                    <input class="form-control dirLeft" placeholder="Packets" id="packets" value="tlshello" />
+                    <input class="form-control dirLeft" placeholder="Length" id="length" value="10-20" />
+                    <input class="form-control dirLeft" placeholder="Interval" id="interval" value="10-20" />
+                </div>
                 <div class="muxForm none" id="muxForm">
                     <div class="orClass"><small>مقدار Concurrency</small></div>
                     <input class="form-control dirLeft" placeholder="Concurrency" id="concurrency" value="8" />
                 </div>
                 <div class="input-group fetchIps">
-                    <button class="btn btn-default" type="submit" id="getFile">
+                    <button class="btn btn-info" type="submit" id="getFile">
                         ایجاد فایل JSON
                     </button>
                 </div>
