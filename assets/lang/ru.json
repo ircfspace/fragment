@@ -23,7 +23,7 @@
 	"config_switch_mux": "Mux",
 	"config_switch_mux_tooltip": "Повышение скорости установки соединения и снижение задержки при отправке и приеме данных",
 	"config_switch_direct_rule": "Правила маршрутизации",
-	"config_switch_direct_rule_tooltip": "Правила маршрутизации (направление трафика для IP-адресов и доменов в Иране, Китае и России + использование IPv4 для Google, Microsoft, Meta и ...)",
+	"config_switch_direct_rule_tooltip": "Правила маршрутизации (направление трафика для IP и доменов в Иране и Китае)",
 	"config_mux_label": "Значение параллелизма",
 	"config_mux_concurrency": "Параллелизм",
 	"config_mux_concurrency_tooltip": "Выберите число от 1 до 1024 (рекомендуется использовать 8 в качестве значения по умолчанию)",

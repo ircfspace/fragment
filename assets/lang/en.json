@@ -23,7 +23,7 @@
 	"config_switch_mux": "Mux",
 	"config_switch_mux_tooltip": "Improving connection establishment speed and reducing latency in sending & receiving data",
 	"config_switch_direct_rule": "Routing Rules",
-	"config_switch_direct_rule_tooltip": "Routing rules (directing traffic for IP and domains in IR, CN & RU + using IPv4 for Google, Microsoft, Meta & ...)",
+	"config_switch_direct_rule_tooltip": "Routing rules (directing traffic for IP and domains in IR & CN)",
 	"config_mux_label": "the value of Concurrency",
 	"config_mux_concurrency": "Concurrency",
 	"config_mux_concurrency_tooltip": "Choose a number between 1 and 1024 (8 is recommended as the default value)",

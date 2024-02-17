@@ -292,7 +292,7 @@ function generateJson() {
             alert('فرم را تکمیل نمایید.');
             return false;
         }
-        fetch('fragment.json?v1.4')
+        fetch('fragment.json?v1.5')
             .then(response => response.json())
             .then(data => {
                 data.outbounds[0].protocol = protocol;
@@ -325,7 +325,7 @@ function generateJson() {
                 if ( ! direct ) {
                     /*delete data.routing.rules[1];
                     delete data.routing.rules[2];*/
-                    data.routing.rules = data.routing.rules.filter((rule, index) => index !== 1 && index !== 2 && index !== 3);
+                    data.routing.rules = data.routing.rules.filter((rule, index) => index !== 1 && index !== 2);
                 }
                 resolve(data);
             })
