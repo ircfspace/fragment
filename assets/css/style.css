@@ -391,6 +391,7 @@ input:checked + .slider {
 	color: #fff;
 	background: transparent;
 	margin: 0;
+	padding: 0;
 }
 
 .tooltip .tooltip-inner {
