@@ -480,7 +480,7 @@ $(document).on('click', '#copyCode, #copyJsonFromQR', function (e) {
         });
 });
 
-let vercelUrl = 'https://ircf.vercel.app/json/prm/';
+let vercelUrl = 'https://irimmortal.vercel.app/json/prm/';
 
 $(document).on('click', '#jsonUrl', function (e) {
     e.preventDefault();
