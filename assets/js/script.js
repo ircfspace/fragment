@@ -384,7 +384,23 @@ function generateJson() {
                 }
                 resolve([
                     data,
-                    'protocol*IRCF*'+protocol+'&network*IRCF*'+stream+'&uuid*IRCF*'+uuid+'&sni*IRCF*'+sni+'&port*IRCF*'+port+'&path*IRCF*'+path+'&tls*IRCF*'+tls+'&insecure*IRCF*'+insecure+'&mux*IRCF*'+mux+'&concurrency*IRCF*'+concurrency+'&packets*IRCF*'+packets+'&lenght*IRCF*'+length+'&interval*IRCF*'+interval+'&grpcMode*IRCF*'+grpcMode+'&serviceName*IRCF*'+serviceName+'&cleanIp*IRCF*'+cleanIp+'&directRules*IRCF*'+direct
+                    'protocol*IRCF*'+protocol+
+                    '&network*IRCF*'+stream+
+                    '&uuid*IRCF*'+uuid+
+                    '&sni*IRCF*'+sni+
+                    '&port*IRCF*'+port+
+                    '&path*IRCF*'+path+
+                    '&tls*IRCF*'+tls+
+                    '&insecure*IRCF*'+insecure+
+                    '&mux*IRCF*'+mux+
+                    '&concurrency*IRCF*'+concurrency+
+                    '&packets*IRCF*'+packets+
+                    '&length*IRCF*'+length+
+                    '&interval*IRCF*'+interval+
+                    '&grpcMode*IRCF*'+grpcMode+
+                    '&serviceName*IRCF*'+serviceName+
+                    '&cleanIp*IRCF*'+cleanIp+
+                    '&directRules*IRCF*'+direct
                 ]);
             })
             .catch(error => {
