@@ -1,0 +1,44 @@
+html[lang="en"] body {
+	direction: ltr;
+	text-align: left;
+}
+
+.flags {
+	float: left;
+	margin: 10px 0 -10px 0;
+}
+html[lang="en"] .flags {
+	float: right;
+}
+html[lang="en"] nav,
+html[lang="en"] .nav,
+html[lang="en"] footer {
+	direction: rtl;
+}
+.flags li {
+	float: left;
+	list-style: none;
+	margin-right: 3px;
+}
+.flags li a {
+	float: left;
+	border: 3px solid transparent;
+}
+.flags li a.active {
+	border-color: #ccc;
+}
+.flags li img {
+	float: left;
+	width: 25px;
+	height: 15px;
+	object-fit: cover;
+}
+
+html[lang="en"] .fetchIps button:first-child {
+	border-radius: 5px 0 0 5px;
+}
+html[lang="en"] .fetchIps button:last-child {
+	border-radius: 0 5px 5px 0;
+	border-right: 1px solid #adadad;
+	border-left: inherit;
+}

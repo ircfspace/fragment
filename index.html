@@ -4,7 +4,8 @@
         <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
         <link href="./assets/css/bootstrap-rtl.min.css" rel="stylesheet" />
         <link href="./assets/css/vazir.css" rel="stylesheet" />
-        <link href="./assets/css/style.css?v1.7" rel="stylesheet" />
+        <link href="./assets/css/style.css?v1.8" rel="stylesheet" />
+        <link href="./assets/css/lang.css?v1.0" rel="stylesheet" />
         <title>IRCF | ابزار فرگمنت</title>
         <meta name="description" content="آی پی سالم و تمیز برای کلودفلر (کلادفلر) جهت دسترسی به اینترنت آزاد" />
         <meta name="keywords" content="کلودفلر, کلادفلر, cloudflare, cf, آی پی تمیز, آی پی سالم, اسکن آی پی" />
@@ -53,92 +54,76 @@
                     </li>
                 </ul>
                 <div class="clearfix"></div>
+                <ul class="flags" id="flags">
+                    <li><a href="index.html" data-lang="en">
+                        <img src="assets/img/flag/gb.png" alt="EN / انگلیسی" />
+                    </a></li>
+                    <li><a href="index.html" data-lang="fa">
+                        <img src="assets/img/flag/ir.png" alt="FA / پارسی" />
+                    </a></li>
+                </ul>
+                <div class="clearfix"></div>
                 <div class="alert alert-info" id="defAlert">
-                    <p>توسط ابزار فرگمنت می‌تونین دامنه‌های مرده‌تون رو مجدد زنده کنید!</p>
+                    <p data-i18n="welcome_message"></p>
                 </div>
-                <p>یک کانفیگ VLESS/VMESS از نوع webSocket وارد کنین:</p>
+                <p data-i18n="config_input"></p>
                 <div class="input-group">
                     <span class="input-group-btn">
-                        <button class="btn btn-default" type="button" id="checkConf">بررسی</button>
+                        <button class="btn btn-default" type="button" id="checkConf" data-i18n="config_input_submit"></button>
                     </span>
-                    <input class="form-control dirLeft" placeholder="Your Config" value="" id="defConfig" />
+                    <input class="form-control dirLeft" data-i18n-label="config_input_label" value="" id="defConfig" />
                 </div>
-                <div class="orClass"><small>یا</small></div>
-                <p>یا تنظیمات زیر رو به‌صورت دستی تکمیل کنین:</p>
+                <div class="orClass"><small data-i18n="config_form_ortext"></small></div>
+                <p data-i18n="config_form_label"></p>
                 <div class="xsWidth withSmallCenter">
                     <select class="form-control dirLeft" id="protocol">
                         <option value="vless">VLESS (WS)</option>
                         <option value="vmess">VMESS (WS)</option>
                     </select>
-                    <input class="form-control dirLeft" placeholder="UUID" id="uuid" />
-                    <input class="form-control dirLeft" placeholder="PORT" id="port" type="number" min="0" />
+                    <input class="form-control dirLeft" data-i18n-label="config_form_uuid" id="uuid" />
+                    <input class="form-control dirLeft" data-i18n-label="config_form_port" id="port" type="number" min="0" />
                 </div>
                 <div class="xsWidth">
-                    <input class="form-control dirLeft" placeholder="CleanIP (default: zula.ir)" id="cleanIp" />
-                    <input class="form-control dirLeft" placeholder="SNI" id="sni" />
-                    <input class="form-control dirLeft" placeholder="PATH" id="path" />
+                    <input class="form-control dirLeft" data-i18n-label="config_form_cleanip" id="cleanIp" />
+                    <input class="form-control dirLeft" data-i18n-label="config_form_sni" id="sni" />
+                    <input class="form-control dirLeft" data-i18n-label="config_form_path" id="path" />
                 </div>
                 <div class="clearfix"></div>
                 <label class="switch">
                     <input type="checkbox" id="tls" checked />
                     <span class="slider round"></span>
-                    <strong>TLS</strong>
+                    <strong data-i18n="config_swith_tls"></strong>
                 </label>
                 <label class="switch">
                     <input type="checkbox" id="insecure" checked />
                     <span class="slider round"></span>
-                    <strong id="secureLabel" title="Allow Insecure">Insecure</strong>
+                    <strong id="secureLabel" title="Allow Insecure" data-i18n="config_swith_insecure"></strong>
                 </label>
                 <label class="switch">
                     <input type="checkbox" id="early" />
                     <span class="slider round"></span>
-                    <strong>Early Data</strong>
+                    <strong data-i18n="config_swith_earlydata"></strong>
                 </label>
                 <label class="switch">
                     <input type="checkbox" id="mux" />
                     <span class="slider round"></span>
-                    <strong>Mux</strong>
+                    <strong data-i18n="config_swith_mux"></strong>
                 </label>
-                <div class="orClass"><small>مقادیر فرگمنت</small></div>
+                <div class="orClass"><small data-i18n="config_fragment_label"></small></div>
                 <div class="xsWidth">
-                    <input class="form-control dirLeft" placeholder="Packets" title="Packets" id="packets" value="tlshello" />
-                    <input class="form-control dirLeft" placeholder="Length" title="Length" id="length" value="10-20" />
-                    <input class="form-control dirLeft" placeholder="Interval" title="Interval" id="interval" value="10-20" />
+                    <input class="form-control dirLeft" data-i18n-label="config_fragment_packets" title="Packets" id="packets" value="tlshello" />
+                    <input class="form-control dirLeft" data-i18n-label="config_fragment_length" title="Length" id="length" value="10-20" />
+                    <input class="form-control dirLeft" data-i18n-label="config_fragment_interval" title="Interval" id="interval" value="10-20" />
                 </div>
                 <div class="muxForm none" id="muxForm">
-                    <div class="orClass"><small>مقدار Concurrency</small></div>
-                    <input class="form-control dirLeft" placeholder="Concurrency" id="concurrency" value="8" />
+                    <div class="orClass"><small data-i18n="config_mux_label"></small></div>
+                    <input class="form-control dirLeft" data-i18n-label="config_mux_concurrency" id="concurrency" value="8" />
                 </div>
                 <div class="input-group fetchIps">
-                    <button class="btn btn-info" type="submit" id="getFile">
-                        ایجاد فایل JSON
-                    </button>
-                    <button class="btn btn-default active" id="copyCode">
-                        کپی کد
-                    </button>
+                    <button class="btn btn-info" type="submit" id="getFile" data-i18n="config_form_submit"></button>
+                    <button class="btn btn-default active" id="copyCode" data-i18n="config_form_copy"></button>
                 </div>
                 <div class="clearfix"></div>
-                <div id="tableResults" class="hidden">
-                    <div class="clearfix"></div>
-                    <hr>
-                    <div class="table-responsive">
-                        <table class="table table-hover">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>آی‌پی</th>
-                                <th>عملیات</th>
-                            </tr>
-                            </thead>
-                            <tbody id="result"></tbody>
-                        </table>
-                    </div>
-                    <div id="list">
-                        <div class="clearfix"></div>
-                        <hr>
-                        <textarea class="form-control dirLeft"></textarea>
-                    </div>
-                </div>
                 <br>
                 <div id="donate" class="modal fade" role="dialog">
                     <div class="modal-dialog modal-sm">
@@ -191,12 +176,13 @@
                         با کمک
                         GFW-knocker
                     </p>
-                    <!--<div class="text-center">
+                    <div class="text-center hidden">
                         <a href="#" class="btn btn-link btn-normal btn-lg btn-outline donateLink" data-toggle="modal" data-target="#donate">☕</a>
-                    </div>-->
+                    </div>
                     <script src="./assets/js/jquery.min.js"></script>
                     <script src="./assets/js/bootstrap.min.js"></script>
-                    <script src="./assets/js/script.js?v1.7.3"></script>
+                    <script src="./assets/js/lang.js?v1.0"></script>
+                    <script src="./assets/js/script.js?v1.8"></script>
                 </footer>
             </div>
         </div>
