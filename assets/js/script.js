@@ -168,6 +168,9 @@ $(document).on('keyup', '#defConfig', function(e) {
         $('#packets').val('1-1');
         $('#length').val('1-3');
         $('#interval').val('5');
+        if ( typeof defConfig.host === "undefined" || typeof defConfig.host !== "undefined" && defConfig.host === "") {
+            $('#sni').val(defConfig.sni);
+        }
     }
     if ( protocol === 'vmess' ) {
         $('#cleanIp').val(defConfig.add);
