@@ -382,7 +382,10 @@ function generateJson() {
                     delete data.routing.rules[2];*/
                     data.routing.rules = data.routing.rules.filter((rule, index) => index !== 1 && index !== 2);
                 }
-                resolve(data);
+                resolve([
+                    data,
+                    'protocol='+protocol+'&network='+stream+'&uuid='+uuid+'&sni='+sni+'&port='+port+'&path='+path+'&tls='+tls+'&insecure='+insecure+'&mux='+mux+'&concurrency='+concurrency+'&packets='+packets+'&lenght='+length+'&interval='+interval+'&grpcMode='+grpcMode+'&serviceName='+serviceName+'&cleanIp='+cleanIp+'&directRules='+direct
+                ]);
             })
             .catch(error => {
                 reject(error);
@@ -394,7 +397,7 @@ $(document).on('click', '#getFile', function(e) {
     e.preventDefault();
     generateJson()
         .then(data => {
-            const jsonData = JSON.stringify(data, null, 2);
+            const jsonData = JSON.stringify(data[0], null, 2);
             const blob = new Blob([jsonData], { type: 'application/json' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
@@ -416,7 +419,7 @@ $(document).on('click', '#copyCode', function (e) {
     e.preventDefault();
     generateJson()
         .then(data => {
-            data = JSON.stringify(data, null, 2);
+            data = JSON.stringify(data[0], null, 2);
             document.getElementById("jsonOutput").value = data;
             const input = document.getElementById('jsonOutput');
             input.select();
@@ -429,14 +432,26 @@ $(document).on('click', '#copyCode', function (e) {
         });
 });
 
-let vercelUrl = 'https://convertor-ircf.vercel.app/json/sub/';
+let vercelUrl = 'https://ircf.vercel.app/json/prm/';
 
 $(document).on('click', '#jsonUrl', function (e) {
     e.preventDefault();
     generateJson()
         .then(data => {
-            data = JSON.stringify(data, null, 2);
-            window.open(vercelUrl+btoa(data));
+            window.open(vercelUrl+btoa(data[1]));
+        })
+        .catch(error => {
+            console.error(error);
+        });
+});
+
+$(document).on('click', '#qrGen', function (e) {
+    e.preventDefault();
+    generateJson()
+        .then(data => {
+            $('#qrcode img').attr('src', "https://quickchart.io/qr?size=300x200&light=ffffff&text="+encodeURIComponent(vercelUrl+btoa(data[1])))
+            $('#qrcode input').val(vercelUrl+btoa(data[1]))
+            $("#qrModal").modal('show');
         })
         .catch(error => {
             console.error(error);
@@ -447,12 +462,12 @@ $(document).on('click', '#copyUrl', function (e) {
     e.preventDefault();
     generateJson()
         .then(data => {
-            data = JSON.stringify(data, null, 2);
-            document.getElementById("jsonOutput").value = vercelUrl+btoa(data);
+            document.getElementById("jsonOutput").value = vercelUrl+btoa(data[1]);
             const input = document.getElementById('jsonOutput');
             input.select();
             input.setSelectionRange(0, 99999);
             document.execCommand('copy');
+            $("#qrModal").modal('hide');
             alert('آدرس در کلیپ‌بورد کپی شد.');
         })
         .catch(error => {
