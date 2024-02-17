@@ -335,6 +335,7 @@ function generateJson() {
             cleanIp = 'zula.ir';
         }
         let direct = $('#direct').is(':checked');
+        let appName = $('#appName').val();
         if ( uuid === '' || sni === ''|| port === '' ) {
             alert('فرم را تکمیل نمایید.');
             return false;
@@ -342,6 +343,16 @@ function generateJson() {
         fetch('fragment.json?v1.6')
             .then(response => response.json())
             .then(data => {
+                let socksPort, httpPort;
+                if (appName === 'nekoray') {
+                    socksPort = 2080;
+                    httpPort = 2081;
+                } else {
+                    socksPort = 10808;
+                    httpPort = 10809;
+                }
+                data.inbounds[0].port = socksPort;
+                data.inbounds[1].port = httpPort;
                 data.outbounds[0].protocol = protocol;
                 if ( mux ) {
                     data.outbounds[0].mux.enabled = true;

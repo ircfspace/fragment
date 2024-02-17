@@ -34,5 +34,6 @@
 	"config_fragment_label": "the values for Fragments",
 	"config_fragment_packets": "Packets",
 	"config_fragment_length": "Length",
-	"config_fragment_interval": "Interval"
+	"config_fragment_interval": "Interval",
+	"app_name_label": "App Name"
 }
