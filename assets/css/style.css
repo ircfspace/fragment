@@ -290,6 +290,12 @@ img[alt="loader"] {
 .minWidth input:last-child {
 	border-radius: 0 3px 3px 0;
 }
+.minWidth.firstlg input {
+	width: 66.66%;
+}
+.minWidth.firstlg select {
+	width: 33.33%;
+}
 .xsWidth {
 	float: right;
 	width: 100%;

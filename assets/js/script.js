@@ -343,6 +343,7 @@ function generateJson() {
         let grpcMode = $('#grpcMode').val();
         let serviceName = $('#serviceName').val();
         let cleanIp = $('#cleanIp').val();
+        let fingerprint = $('#fingerprint').val();
         if ( cleanIp === '' ) {
             cleanIp = 'zula.ir';
         }
@@ -385,6 +386,7 @@ function generateJson() {
                 }
                 data.outbounds[0].streamSettings.tlsSettings.allowInsecure = (insecure ? true : false);
                 data.outbounds[0].streamSettings.tlsSettings.serverName = sni;
+                data.outbounds[0].streamSettings.tlsSettings.fingerprint = fingerprint;
                 data.outbounds[1].settings.fragment.packets = packets;
                 data.outbounds[1].settings.fragment.length = length;
                 data.outbounds[1].settings.fragment.interval = interval;
@@ -431,6 +433,7 @@ function generateJson() {
                     '&serviceName*IRCF*'+serviceName+
                     '&cleanIp*IRCF*'+cleanIp+
                     '&appName*IRCF*'+appName+
+                    '&fingerprint*IRCF*'+fingerprint+
                     '&directRules*IRCF*'+direct
                 ]);
             })

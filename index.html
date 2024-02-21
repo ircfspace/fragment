@@ -4,7 +4,7 @@
         <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
         <link href="./assets/css/bootstrap-rtl.min.css" rel="stylesheet" />
         <link href="./assets/css/vazir.css" rel="stylesheet" />
-        <link href="./assets/css/style.css?v1.12.3" rel="stylesheet" />
+        <link href="./assets/css/style.css?v1.13" rel="stylesheet" />
         <link href="./assets/css/lang.css?v1.11" rel="stylesheet" />
         <title>IRCF | ابزار فرگمنت</title>
         <meta name="description" content="توسط ابزار فرگمنت می‌تونین دامنه‌های مرده‌تون رو مجدد زنده کنید!" />
@@ -87,7 +87,7 @@
                 </div>
                 <div class="orClass"><small data-i18n="config_form_ortext"></small></div>
                 <p data-i18n="config_form_label"></p>
-                <div class="xsWidth withSmallCenter">
+                <div class="xsWidth">
                     <select class="form-control dirLeft" id="protocol">
                         <option value="vless">VLESS</option>
                         <option value="vmess">VMESS</option>
@@ -97,13 +97,26 @@
                         <option value="ws">WS</option>
                         <option value="grpc">GRPC</option>
                     </select>
-                    <input class="form-control dirLeft" data-i18n-label="config_form_uuid" id="uuid" />
-                    <input class="form-control dirLeft" data-i18n-label="config_form_port" id="port" type="number" min="0" />
+                    <input class="form-control dirLeft" data-i18n-label="config_form_cleanip" id="cleanIp" data-toggle="tooltip" data-i18n-title="config_form_cleanip_tooltip" />
                 </div>
                 <div class="xsWidth">
-                    <input class="form-control dirLeft" data-i18n-label="config_form_cleanip" id="cleanIp" data-toggle="tooltip" data-i18n-title="config_form_cleanip_tooltip" />
                     <input class="form-control dirLeft" data-i18n-label="config_form_sni" id="sni" />
                     <input class="form-control dirLeft" data-i18n-label="config_form_path" id="path" />
+                    <input class="form-control dirLeft" data-i18n-label="config_form_port" id="port" type="number" min="0" />
+                </div>
+                <div class="minWidth firstlg">
+                    <input class="form-control dirLeft" data-i18n-label="config_form_uuid" id="uuid" />
+                    <select class="form-control dirLeft" id="fingerprint">
+                        <option value="none"></option>
+                        <option value="chrome" selected>Chrome</option>
+                        <option value="firefox">Firefox</option>
+                        <option value="safari">Safari</option>
+                        <option value="edge">Edge</option>
+                        <option value="android">Android</option>
+                        <option value="ios">IOS</option>
+                        <option value="random">Random</option>
+                        <option value="randomized">Randomized</option>
+                    </select>
                 </div>
                 <div class="minWidth none" id="grpcOnly">
                     <select class="form-control dirLeft" id="grpcMode">
@@ -243,7 +256,7 @@
                     <script src="./assets/js/jquery.min.js"></script>
                     <script src="./assets/js/bootstrap.min.js"></script>
                     <script src="./assets/js/lang.js?v1.12.3"></script>
-                    <script src="./assets/js/script.js?v1.12.6"></script>
+                    <script src="./assets/js/script.js?v1.13"></script>
                 </footer>
             </div>
         </div>
