@@ -49,6 +49,7 @@
 ### Fragment Tool
 * Using the Fragment tool, you can revive your dead domains!
 * Thanks for @GFW-knocker's guidance
-* to participate in translating the tool into other languages, you can follow the steps below:<br> https://github.com/ircfspace/fragment/tree/main/assets/lang
+* to participate in translating the tool into other languages, you can follow the steps below:<br>
+* * https://github.com/ircfspace/fragment/tree/main/assets/lang
 * https://ircf.space
 * https://github.com/ircfspace/fragment
