@@ -102,7 +102,21 @@
                 <div class="xsWidth">
                     <input class="form-control dirLeft" data-i18n-label="config_form_sni" id="sni" />
                     <input class="form-control dirLeft" data-i18n-label="config_form_path" id="path" />
-                    <input class="form-control dirLeft" data-i18n-label="config_form_port" id="port" type="number" min="0" />
+                    <select class="form-control dirLeft" id="port">
+                        <option value="80">80</option>
+                        <option value="443" selected>443</option>
+                        <option value="2052">2052</option>
+                        <option value="2053">2053</option>
+                        <option value="2082">2082</option>
+                        <option value="2083">2083</option>
+                        <option value="2086">2086</option>
+                        <option value="2087">2087</option>
+                        <option value="2095">2095</option>
+                        <option value="2096">2096</option>
+                        <option value="8080">8080</option>
+                        <option value="8443">8443</option>
+                        <option value="8880">8880</option>
+                    </select>
                 </div>
                 <div class="minWidth firstlg">
                     <input class="form-control dirLeft" data-i18n-label="config_form_uuid" id="uuid" />
@@ -256,7 +270,7 @@
                     <script src="./assets/js/jquery.min.js"></script>
                     <script src="./assets/js/bootstrap.min.js"></script>
                     <script src="./assets/js/lang.js?v1.12.3"></script>
-                    <script src="./assets/js/script.js?v1.13"></script>
+                    <script src="./assets/js/script.js?v1.13.5"></script>
                 </footer>
             </div>
         </div>

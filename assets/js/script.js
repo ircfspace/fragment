@@ -1,4 +1,5 @@
-const protocols = ["vless", "vmess", 'trojan'];
+const protocols = ["vless", "vmess", "trojan"];
+const ports = ["80", "443", "2052", "2053", "2082", "2083", "2086", "2087", "2095", "2096", "8080", "8443", "8880"];
 
 function parser(protocol, config) {
     if ( protocol === 'vmess' ) {
@@ -103,6 +104,8 @@ $(document).on('click', '#checkConf', function(e) {
 
 function resetForm() {
     $('#protocol option').removeAttr('selected');
+    $('#stream option').removeAttr('selected');
+    $('#allApp').prop('checked', true);
     $('#tls').prop('checked', true);
     $('#early').prop('checked', false);
     $('#uuid').val("");
@@ -111,6 +114,7 @@ function resetForm() {
     $('#cleanIp').val("");
     $('#path').val("");
     $('#concurrency').val("");
+    $('#fingerprint option[value="chrome"]').attr('selected', 'selected').prop('selected', true);
     $('#packets').val('tlshello');
     $('#length').val('10-20');
     $('#interval').val('10-20');
@@ -133,7 +137,7 @@ $(document).on('keyup', '#defConfig', function(e) {
     $('#protocol option').removeAttr('selected');
     $('#protocol option[value="'+protocol+'"]').attr('selected', 'selected').prop('selected', true);
     let defConfig = parser(protocol, config);
-    console.log(defConfig)
+    //console.log(defConfig)
     if ( protocol === 'vmess' && ["reality", "tcp"].includes(defConfig.tls) ) {
         alert('نوع کانفیگ باید WS/GRPC باشد!');
         resetForm();
@@ -152,7 +156,12 @@ $(document).on('keyup', '#defConfig', function(e) {
         $('#stream option[value="'+ (defConfig.type === 'ws' ? 'ws' : 'grpc') +'"]').attr('selected', 'selected').prop('selected', true).trigger('change');
     }
     let port = String(getAddress(config)[1]).replace('/', '');
-    $('#port').val(port);
+    if ( ! ports.includes(port) ) {
+        alert('باید یکی‌از پورت‌های کلودفلر را انتخاب کنید!');
+        resetForm();
+        return false;
+    }
+    $('#port option[value="'+ port +'"]').attr('selected', 'selected').prop('selected', true).trigger('change');
     $('#sni').val(defConfig.host);
     if ( (protocol === 'vmess' && defConfig.tls === "tls") || (protocol === 'vless' && defConfig.security === "tls") || (protocol === 'trojan' && defConfig.security === "tls") ) {
         $('#tls').prop('checked', true);
