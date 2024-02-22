@@ -1,5 +1,4 @@
-# Fragment Tool
-## دور زدن فیلترینگ دامنه با فرگمنت
+# دور زدن فیلترینگ دامنه با فرگمنت
 
 توسط ابزار فرگمنت می‌تونین دامنه‌های مرده‌تون رو مجدد زنده کنید!<br>
 با فرگمنت‌کردن کانفیگ‌های VLESS/VMESS/TROJAN از نوع WS/GRPC میتونین به کمک این‌ابزار و یک آی‌پی تمیز کلودفلر، فیلترینگ دامنه‌رو دور بزنین.
@@ -29,5 +28,6 @@ https://github.com/ircfspace/fragment/tree/main/assets/lang
 Thanks for @GFW-knocker's guidance.
 
 ---
-
+### Fragment Tool
 * https://ircf.space
+* https://github.com/ircfspace/fragment
