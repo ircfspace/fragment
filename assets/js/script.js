@@ -156,12 +156,13 @@ $(document).on('keyup', '#defConfig', function(e) {
         $('#stream option[value="'+ (defConfig.type === 'ws' ? 'ws' : 'grpc') +'"]').attr('selected', 'selected').prop('selected', true).trigger('change');
     }
     let port = String(getAddress(config)[1]).replace('/', '');
-    if ( ! ports.includes(port) ) {
+    /*if ( ! ports.includes(port) ) {
         alert('باید یکی‌از پورت‌های کلودفلر را انتخاب کنید!');
         resetForm();
         return false;
     }
-    $('#port option[value="'+ port +'"]').attr('selected', 'selected').prop('selected', true).trigger('change');
+    $('#port option[value="'+ port +'"]').attr('selected', 'selected').prop('selected', true).trigger('change');*/
+    $('#port').val(port);
     $('#sni').val(defConfig.host);
     if ( (protocol === 'vmess' && defConfig.tls === "tls") || (protocol === 'vless' && defConfig.security === "tls") || (protocol === 'trojan' && defConfig.security === "tls") ) {
         $('#tls').prop('checked', true);
