@@ -493,7 +493,7 @@ $(document).on('click', '#copyCode, #copyJsonFromQR', function (e) {
         });
 });
 
-let vercelUrl = 'https://irimmortal.vercel.app/json/prm/';
+let vercelUrl = 'https://filterchikhaktoosaret.vercel.app/json/prm/';
 
 $(document).on('click', '#jsonUrl', function (e) {
     e.preventDefault();
