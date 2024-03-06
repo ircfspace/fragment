@@ -40,5 +40,6 @@
 	"config_app_name_label": "Compatibility",
 	"config_app_name_all": "All Apps",
 	"config_app_name_nekoray_tooltip": "to use the fragment in Nekoray, you need to switch the core from the settings of this application to XRAY",
-	"config_app_name_napsternetV_tooltip": "by selecting NapsternetV, the Routing Rules option will be turned off"
+	"config_app_name_napsternetV_tooltip": "by selecting NapsternetV, the Routing Rules option will be turned off",
+    "config_remarks_label": "Config Title"
 }

@@ -118,6 +118,8 @@ function resetForm() {
     $('#packets').val('tlshello');
     $('#length').val('10-20');
     $('#interval').val('10-20');
+    $('#remarksForm').addClass('none')
+    $('#remarks').val("")
 }
 
 $(document).on('keyup', '#defConfig', function(e) {
@@ -138,6 +140,8 @@ $(document).on('keyup', '#defConfig', function(e) {
     $('#protocol option[value="'+protocol+'"]').attr('selected', 'selected').prop('selected', true);
     let defConfig = parser(protocol, config);
     //console.log(defConfig)
+    $('#remarksForm').removeClass('none')
+    $('#remarks').val(( protocol === 'vmess' ? defConfig.ps : defConfig.remark)+" (IRCF Fragment)")
     if ( protocol === 'vmess' && ["reality", "tcp"].includes(defConfig.tls) ) {
         alert('نوع کانفیگ باید WS/GRPC باشد!');
         resetForm();
@@ -359,11 +363,15 @@ function generateJson() {
         }
         let direct = $('#direct').is(':checked');
         let appName = $('input[name="app"]:checked').attr('id');
+        let remarks = $('#remarks').val();
+        if ( remarks === "") {
+            remarks = "IRCF Fragment";
+        }
         if ( uuid === '' || sni === ''|| port === '' ) {
             alert('فرم را تکمیل نمایید.');
             return false;
         }
-        fetch('fragment.json?v1.6')
+        fetch('fragment.json?v1.7')
             .then(response => response.json())
             .then(data => {
                 if (appName === 'nekoray') {
@@ -375,6 +383,7 @@ function generateJson() {
                     data.inbounds[1].port = 10809;
                 }
                 data.outbounds[0].protocol = protocol;
+                data.outbounds[0].remarks = remarks;
                 if ( mux ) {
                     data.outbounds[0].mux.enabled = true;
                     data.outbounds[0].mux.concurrency = Number(concurrency);
@@ -444,7 +453,8 @@ function generateJson() {
                     '&cleanIp*IRCF*'+cleanIp+
                     '&appName*IRCF*'+appName+
                     '&fingerprint*IRCF*'+fingerprint+
-                    '&directRules*IRCF*'+direct
+                    '&directRules*IRCF*'+direct+
+                    '&remarks*IRCF*'+remarks
                 ]);
             })
             .catch(error => {

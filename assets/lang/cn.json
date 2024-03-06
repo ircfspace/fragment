@@ -40,5 +40,6 @@
 	"config_app_name_label": "兼容性",
 	"config_app_name_all": "所有应用",
 	"config_app_name_nekoray_tooltip": "要在 Nekoray 中使用片段，您需要从此应用程序的设置中将核心切换到 XRAY",
-	"config_app_name_napsternetV_tooltip": "选择 NapsternetV 后，路由规则选项将被关闭"
+	"config_app_name_napsternetV_tooltip": "选择 NapsternetV 后，路由规则选项将被关闭",
+    "config_remarks_label": "配置标题"
 }

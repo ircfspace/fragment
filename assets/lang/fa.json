@@ -40,5 +40,6 @@
 	"config_app_name_label": "سازگاری",
 	"config_app_name_all": "همه برنامه\u200Cها",
 	"config_app_name_nekoray_tooltip": "برای استفاده از فرگمنت در Nekoray باید هسته را از تنظیمات این\u200Cبرنامه به XRAY تغییر دهید",
-	"config_app_name_napsternetV_tooltip": "با انتخاب NapsternetV گزینه Routing Rules خاموش می\u200Cشود"
+	"config_app_name_napsternetV_tooltip": "با انتخاب NapsternetV گزینه Routing Rules خاموش می\u200Cشود",
+	"config_remarks_label": "عنوان کانفیگ"
 }

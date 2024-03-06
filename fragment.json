@@ -47,6 +47,7 @@
   "outbounds": [
     {
       "tag": "proxy",
+      "remarks": "IRCF Fragment",
       "protocol": "###PROTOCOL###",
       "settings": {
         "vnext": [
