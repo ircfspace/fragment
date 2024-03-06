@@ -44,10 +44,10 @@
       }
     }
   ],
+  "remarks": "IRCF Fragment",
   "outbounds": [
     {
       "tag": "proxy",
-      "remarks": "IRCF Fragment",
       "protocol": "###PROTOCOL###",
       "settings": {
         "vnext": [

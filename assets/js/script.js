@@ -371,9 +371,10 @@ function generateJson() {
             alert('فرم را تکمیل نمایید.');
             return false;
         }
-        fetch('fragment.json?v1.7')
+        fetch('fragment.json?v1.8')
             .then(response => response.json())
             .then(data => {
+                data.remarks = remarks;
                 if (appName === 'nekoray') {
                     data.inbounds[0].port = 2080;
                     data.inbounds[1].port = 2081;
@@ -383,7 +384,6 @@ function generateJson() {
                     data.inbounds[1].port = 10809;
                 }
                 data.outbounds[0].protocol = protocol;
-                data.outbounds[0].remarks = remarks;
                 if ( mux ) {
                     data.outbounds[0].mux.enabled = true;
                     data.outbounds[0].mux.concurrency = Number(concurrency);
