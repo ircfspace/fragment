@@ -371,7 +371,7 @@ function generateJson() {
             alert('فرم را تکمیل نمایید.');
             return false;
         }
-        fetch('fragment.json?v1.8')
+        fetch('fragment.json?v1.14')
             .then(response => response.json())
             .then(data => {
                 data.remarks = remarks;
