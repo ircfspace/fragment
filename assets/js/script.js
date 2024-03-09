@@ -379,7 +379,7 @@ function generateJson() {
             alert('فرم را تکمیل نمایید.');
             return false;
         }
-        fetch('fragment.json?v1.14')
+        fetch(baseUrl+'fragment.json?v1.14')
             .then(response => response.json())
             .then(data => {
                 data.remarks = remarks;
@@ -480,7 +480,7 @@ $(document).on('click', '#getFile', function(e) {
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'fragment [ircf.space].json';
+            a.download = 'Fragment [ircf.space].json';
             a.style.display = 'none';
             document.body.appendChild(a);
             a.click();
@@ -511,8 +511,6 @@ $(document).on('click', '#copyCode, #copyJsonFromQR', function (e) {
         });
 });
 
-let vercelUrl = 'https://filterchikhaktoosaret.vercel.app/json/prm/';
-
 $(document).on('click', '#jsonUrl', function (e) {
     e.preventDefault();
     generateJson()
@@ -528,7 +526,7 @@ $(document).on('click', '#qrGen', function (e) {
     e.preventDefault();
     generateJson()
         .then(data => {
-            $('#qrcode img').attr('src', "https://quickchart.io/qr?size=300x200&light=ffffff&text="+encodeURIComponent(vercelUrl+btoa(data[1])))
+            $('#qrcode img').attr('src', qrUrl+"?size=300x200&light=ffffff&text="+encodeURIComponent(vercelUrl+btoa(data[1])))
             $('#qrcode input').val(vercelUrl+btoa(data[1]))
             $("#qrModal").modal('show');
         })
