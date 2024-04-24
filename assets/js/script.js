@@ -125,9 +125,9 @@ function resetForm() {
 $(document).on('keyup', '#defConfig', function(e) {
     e.preventDefault();
     let config = $(this).val().trim();
+    resetForm();
     if ( config === '' ) {
         //console.clear();
-        resetForm();
         return false;
     }
     let protocol = getProtocol(config);
@@ -245,11 +245,25 @@ $(document).on('keyup', '#defConfig', function(e) {
     }
     let path = setPath(protocol !== 'vmess' && defConfig.type === 'ws' || protocol === 'vmess' && defConfig.net === 'ws' ? defConfig.path : "");
     let early = $('#early').is(':checked');
-    if ( early && stream === 'ws' ) {
+    if (path.endsWith("?ed=2560") && !early) {
+        $('#early').prop('checked', true);
+    }
+    else if (path.endsWith("?ed=2048") ) {
+        path = path.replace('?ed=2048', '?ed=2560');
+        if (!early) {
+            $('#early').prop('checked', true);
+        }
+    }
+    else if ( early && stream === 'ws' ) {
+        path = path.replace(/\?ed=\d+/, '');
         path = path+'?ed=2560';
     }
-    $('#uuid').val(getHashId(defConfig.id));
+    else {
+        path = path.replace(/\?ed=\d+/, '');
+        $('#early').prop('checked', false);
+    }
     $('#path').val(path);
+    $('#uuid').val(getHashId(defConfig.id));
 });
 
 function setPath(string) {
@@ -257,7 +271,7 @@ function setPath(string) {
         string = "";
     }
     if ( string.length > 0 ) {
-        string = string.replace('?ed=2048', '').replace('?ed=2560', '');
+        //string = string.replace('?ed=2048', '').replace('?ed=2560', '');
         /*if (!string.startsWith("/")) {
             string = '/'+string;
         }*/
@@ -289,6 +303,11 @@ $(document).on('click', '#early', function(e) {
     let stream = $('#stream').val();
     if ( early && stream === 'ws' ) {
         path = path+'?ed=2560';
+        $('#early').prop('checked', true);
+    }
+    else {
+        path = path.replace(/\?ed=\d+/, '');
+        $('#early').prop('checked', false);
     }
     $('#path').val(path);
 });
