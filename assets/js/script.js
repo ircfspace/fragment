@@ -246,7 +246,7 @@ $(document).on('keyup', '#defConfig', function(e) {
     let path = setPath(protocol !== 'vmess' && defConfig.type === 'ws' || protocol === 'vmess' && defConfig.net === 'ws' ? defConfig.path : "");
     let early = $('#early').is(':checked');
     if ( early && stream === 'ws' ) {
-        path = path+'?ed=2048';
+        path = path+'?ed=2560';
     }
     $('#uuid').val(getHashId(defConfig.id));
     $('#path').val(path);
@@ -257,7 +257,7 @@ function setPath(string) {
         string = "";
     }
     if ( string.length > 0 ) {
-        string = string.replace('?ed=2048', '');
+        string = string.replace('?ed=2048', '').replace('?ed=2560', '');
         /*if (!string.startsWith("/")) {
             string = '/'+string;
         }*/
@@ -288,7 +288,7 @@ $(document).on('click', '#early', function(e) {
     let path = setPath($('#path').val());
     let stream = $('#stream').val();
     if ( early && stream === 'ws' ) {
-        path = path+'?ed=2048';
+        path = path+'?ed=2560';
     }
     $('#path').val(path);
 });
@@ -448,7 +448,7 @@ function generateJson() {
                     '&uuid*IRCF*'+uuid+
                     '&sni*IRCF*'+sni+
                     '&port*IRCF*'+port+
-                    '&path*IRCF*'+path?.replace('/?ed=2048', '/abcdz=2048')+
+                    '&path*IRCF*'+path?.replace('/?ed=2560', '/abcdz=2560')+
                     '&tls*IRCF*'+tls+
                     '&insecure*IRCF*'+insecure+
                     '&mux*IRCF*'+mux+
