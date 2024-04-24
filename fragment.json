@@ -92,7 +92,7 @@
           "show": false
         },
         "wsSettings": {
-          "path": "###PATH###?ed=2048",
+          "path": "###PATH###?ed=2560",
           "headers": {
             "Host": "###SNI###"
           }
